@@ -1,0 +1,56 @@
+# Keep image build contexts small and free of secrets/local cruft.
+
+# Dependencies (reinstalled inside the image)
+**/node_modules
+.npm
+.yarn/install-state.gz
+
+# Build output (rebuilt inside the image)
+**/dist
+**/build
+**/out
+**/.angular
+*.tsbuildinfo
+
+# Version control & CI
+.git
+.gitignore
+.github
+
+# Env files & secrets (never bake these into an image)
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env*.template
+*.pem
+
+# Tests, coverage & reports
+**/coverage
+**/.jest-cache
+**/test-results
+**/.playwright-mcp
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+
+# Local infra & tooling not needed at build time
+docker-compose*.yml
+.dockerignore
+Dockerfile*
+.serena/cache
+
+# Course/docs material (not part of the app image)
+course/
+README.md
+**/*.md
