@@ -73,27 +73,26 @@
 
 **Goal:** Understand what leading CRMs offer
 
+**Note:** This is web research, not a library-docs lookup — Context7 MCP only serves documentation for code
+dependencies (Sequelize, Angular, etc.) and has no data on competitor products or market positioning. Use web
+search here instead.
+
 **Agent tasks:**
 
-- Use Context7 MCP to research HubSpot CRM features
-- Use Context7 MCP to research Salesforce CRM features
-- Use Context7 MCP to research Pipedrive features
-- Use Context7 MCP to research other modern CRMs
+- Use web search to research HubSpot CRM features
+- Use web search to research Salesforce CRM features
+- Use web search to research Pipedrive features
+- Use web search to research other modern CRMs
 - Identify common features across all competitors
 - Find unique features that differentiate leaders
 - Analyze market trends (what users expect in 2025)
 
-**Context7 MCP usage:**
+**Web search usage:**
 
 ```
-/resolve-library-id hubspot
-/get-library-docs /hubspot/crm topic:"core features"
-
-/resolve-library-id salesforce
-/get-library-docs /salesforce/crm topic:"feature overview"
-
-/resolve-library-id pipedrive
-/get-library-docs /pipedrive/api topic:"crm capabilities"
+Search: "HubSpot CRM core features 2025"
+Search: "Salesforce CRM feature overview enterprise"
+Search: "Pipedrive CRM capabilities pipeline management"
 ```
 
 **Output:** `.claude/workspace/pm-analysis/competitive-research.md`
@@ -524,35 +523,38 @@ Create `.claude/workspace/pm-analysis/codebase-analysis.md` with:
 
 ---
 
-### Phase 2: Competitive Research (Context7 MCP)
+### Phase 2: Competitive Research (Web Search)
 
 **Objective:** Understand what leading CRMs offer.
 
+**Note:** Context7 MCP resolves and serves *library/package documentation* for code dependencies — it has no data
+on competitor products, features, or market positioning. Use web search for this phase instead; reserve Context7
+for looking up how a library you're actually depending on (Sequelize, Angular, etc.) works.
+
 **Steps:**
 
-1. Research HubSpot CRM using Context7 MCP:
+1. Research HubSpot CRM using web search:
 
    ```
-   Use Context7 MCP resolve-library-id: "hubspot crm"
-   Use Context7 MCP get-library-docs: Query HubSpot CRM features
+   Search: "HubSpot CRM features 2025 pricing tiers"
+   Search: "HubSpot CRM vs competitors market positioning"
    ```
 
    Focus on: core features, unique capabilities, market positioning
 
-2. Research Salesforce CRM using Context7 MCP:
+2. Research Salesforce CRM using web search:
 
    ```
-   Use Context7 MCP resolve-library-id: "salesforce crm"
-   Use Context7 MCP get-library-docs: Query Salesforce CRM features
+   Search: "Salesforce CRM core features enterprise 2025"
+   Search: "Salesforce customization and integration ecosystem"
    ```
 
    Focus on: enterprise features, customization, integrations
 
-3. Research Pipedrive using Context7 MCP:
+3. Research Pipedrive using web search:
 
    ```
-   Use Context7 MCP resolve-library-id: "pipedrive"
-   Use Context7 MCP get-library-docs: Query Pipedrive features
+   Search: "Pipedrive CRM features pipeline management 2025"
    ```
 
    Focus on: sales-focused features, pipeline management
@@ -733,7 +735,7 @@ Orchestration Partner: [Launches PM agent with complete prompt]
 **What the agent does:**
 
 1. Reads your entire `src/` directory
-2. Uses Context7 MCP to research HubSpot, Salesforce, Pipedrive
+2. Uses web search to research HubSpot, Salesforce, Pipedrive
 3. Generates 3 analysis files
 4. Produces feature roadmap with 5-10 prioritized features
 
@@ -895,14 +897,14 @@ Total: 9-13 hours (realistic)
 **Technical skills:**
 
 -  AI PM agent that analyzes CRM codebases
--  Competitive research using Context7 MCP
+-  Competitive research using web search
 -  Feature roadmap for YOUR specific implementation
 -  2-4 PM-suggested features implemented (based on time)
 
 **Methodology skills:**
 
 -  Multi-phase agent orchestration (analysis → research → synthesis)
--  Context7 MCP for market research
+-  Web search for market research
 -  PM-driven development workflow
 -  Feature prioritization (value vs complexity)
 
@@ -927,7 +929,7 @@ Total: 9-13 hours (realistic)
 
 - Scope down competitive research (focus on 2-3 CRMs instead of 4-5)
 - Limit roadmap to 5-7 features instead of 8-10
-- Use Context7 MCP efficiently (targeted queries, not broad exploration)
+- Use targeted search queries, not broad exploration
 
 **PM roadmap features too complex?**
 
@@ -947,10 +949,10 @@ Total: 9-13 hours (realistic)
 - Check that codebase analysis is accurate before moving to research phase
 - Re-run codebase analysis phase if needed
 
-**Context7 MCP not returning good research?**
+**Web search not returning good research?**
 
 - Use more specific queries ("hubspot crm email integration features")
-- Try different library IDs (resolve-library-id with variations)
+- Try different phrasing if a search comes back thin
 - Research 2-3 CRMs deeply vs 5+ CRMs shallowly
 
 ---
