@@ -903,13 +903,13 @@ Build email notification feature following existing repo patterns.
 
 ## Immediate Next Steps
 
-### For CTO Demo (Next 1 Hour)
+### For Demo
 
 - Show working features (web CRM, mobile app)
 - Reveal `.claude/` structure ("This IS the curriculum")
 - Explain: "This scales to brownfield repos per-repo"
 
-### After Demo (This Week)
+### After Demo
 
 - Design brownfield `.claude/` template in detail
 - Test in one complex company repo
