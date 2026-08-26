@@ -131,7 +131,7 @@ Atomic commits are part of the comprehensive **Quality Standards** that apply to
 
 -  A+ code quality
 -  Professional git practices (atomic commits)
--  Test coverage requirements (≥ 80% backend)
+-  Test coverage guideline (~80% backend as a default — adjust to the project)
 -  Type safety enforcement (TypeScript strict mode)
 -  Accessibility standards (WCAG 2.1 AA)
 

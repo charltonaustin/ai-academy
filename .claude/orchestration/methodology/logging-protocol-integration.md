@@ -12,7 +12,7 @@ You MUST maintain a detailed session log throughout your work. This is not optio
 ### Log Setup
 
 1. **Create Log File:** `.claude/workspace/[FEATURE]/agent-logs/[YOUR-AGENT-NAME]-session.md`
-2. **Use Template:** Copy appropriate template from `.claude/methodology/logging-templates.md`
+2. **Use Template:** Copy appropriate template from `.claude/orchestration/methodology/logging-templates.md`
 3. **Update Real-Time:** Log decisions, discoveries, and coordination events as they happen
 
 ### Critical Logging Points (MUST LOG)
@@ -52,15 +52,16 @@ Before completing your task:
 **Failure to maintain session log = Incomplete task regardless of code quality.**
 ```
 
-## TESTING REQUIREMENTS (MANDATORY)
+## TESTING REQUIREMENTS
 
-Testing framework is initialized and ready for use. You MUST write tests for all code you implement.
+Testing framework is initialized and ready for use. Write tests for the code you implement; use the coverage
+guideline below as a default, and adjust it if this project's stakes call for more or less rigor.
 
-### Test Coverage Requirements
+### Test Coverage Guideline
 
-- **Unit Tests:** All business logic, services, utilities (≥ 80% coverage)
-- **Component Tests:** All Angular components with user interactions (≥ 80% coverage)
-- **Integration Tests:** REST endpoints, controllers, database operations (≥ 70% coverage)
+- **Unit Tests:** All business logic, services, utilities (~80% coverage as a default)
+- **Component Tests:** All Angular components with user interactions (~80% coverage as a default)
+- **Integration Tests:** REST endpoints, controllers, database operations (~70% coverage as a default)
 
 ### Writing Tests
 
@@ -93,7 +94,7 @@ Before reporting task complete:
 
 - [ ] All tests written for new code
 - [ ] All tests passing (`npm test`)
-- [ ] Coverage ≥ 80% for new code (`npm run test:cov`)
+- [ ] Coverage meets this project's testing guideline for new code (`npm run test:cov`)
 - [ ] No skipped or pending tests (unless explicitly documented)
 - [ ] Tests documented in session log
 
@@ -169,11 +170,11 @@ Add to all frontend agent session logs:
 
 ### For Existing Agent Specs:
 
-Update all agent specifications in `.claude/methodology/agent-specs-library.md` to include the logging protocol.
+Update all agent specifications in `.claude/orchestration/methodology/agent-specs-library.md` to include the logging protocol.
 
 ### For Prompt Templates:
 
-Update all templates in `.claude/methodology/prompt-templates.md` to include the standard logging block.
+Update all templates in `.claude/orchestration/methodology/prompt-templates.md` to include the standard logging block.
 
 ## Benefits of Systematic Logging
 

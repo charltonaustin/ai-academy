@@ -1,5 +1,16 @@
 # Testing as Infrastructure: Early Setup, Continuous Coverage
 
+## Coverage Numbers Are a Guideline, Not a Mandate
+
+Every coverage percentage in this document (80% lines/functions, 70% branches, etc.) is a **default starting
+point**, not a universal rule. Coverage percentage is a contested metric — chasing a fixed number encourages
+low-value tests written just to move the number (Goodhart's law), which is worse than no coverage target at all.
+
+**Set the testing level to what makes sense for the project.** A solo prototype or a throwaway internal tool
+needs far less rigor than a payments service or anything handling sensitive data. Treat the numbers below as a
+reasonable default to adjust — up or down — for your project's actual risk and stakes, not as a gate every
+project must clear identically.
+
 ## Critical Pattern: Testing Framework as Infrastructure
 
 **Problem:** Agents defer testing when "no test infrastructure exists yet"
@@ -136,6 +147,7 @@ Angular CLI produces coverage with `--coverage` (Vitest's V8 provider). There is
 
 ```jsonc
 // angular.json → projects.crm-frontend.architect.test.options
+// These numbers are a starting point — tune them (up or down) to what this project needs.
 {
   "coverage": true,
   "coverageThresholds": {
@@ -244,11 +256,11 @@ npm run test:coverage     # Generate coverage report
 - **Component tests:** `src/app/**/*.component.spec.ts`
 - **Integration/E2E tests:** Playwright specs under `e2e/`
 
-### Coverage Requirements
+### Coverage Guideline
 
-- Minimum 80% coverage for service layers
-- All business logic must have unit tests
-- Critical user flows must have integration tests
+- ~80% coverage for service layers is a reasonable default — adjust to what this project actually needs
+- All business logic should have unit tests
+- Critical user flows should have integration tests
 
 ````
 
@@ -276,7 +288,7 @@ Task Complete When:
 -  TypeScript compilation passes
 -  Linting passes
 -  Unit tests written and passing ← NEW
--  Coverage ≥ 80% for new code ← NEW
+-  Coverage meets this project's testing guideline for new code ← NEW
 -  Session log complete (including test strategy)
 ```
 
@@ -291,7 +303,7 @@ npm run lint                 # Zero errors required
 
 # Testing (NEW)
 npm test                 # All tests pass
-npm run test:coverage        # ≥ 80% coverage for new code
+npm run test:coverage        # Coverage meets this project's guideline for new code
 
 # Build
 npm run build                # Production build succeeds
@@ -299,11 +311,14 @@ npm run build                # Production build succeeds
 
 ---
 
-## Coverage Requirements by Code Type
+## Coverage Guideline by Code Type
+
+**These are default starting points, not mandates — raise or lower them based on what this project's risk profile
+actually calls for.**
 
 ### Service Layer (Backend Business Logic)
 
-**Coverage:** ≥ 80% (lines, functions, branches)
+**Coverage:** ~80% (lines, functions, branches) as a default
 **Test Types:** Unit tests with mocked dependencies
 
 **Example (LeadSummaryService):**
@@ -331,12 +346,12 @@ describe('LeadSummaryService', () => {
 
 ### REST Controllers
 
-**Coverage:** ≥ 70% (integration complexity)
+**Coverage:** ~70% as a default (integration complexity)
 **Test Types:** Integration tests with mocked database (+ Supertest e2e against routes)
 
 ### Angular Components
 
-**Coverage:** ≥ 80% (component logic)
+**Coverage:** ~80% as a default (component logic)
 **Test Types:** `TestBed` component tests with DOM interaction simulation
 
 ---
@@ -346,15 +361,16 @@ describe('LeadSummaryService', () => {
 ### Add to ALL Feature Agent Prompts
 
 ````markdown
-## TESTING REQUIREMENTS (MANDATORY)
+## TESTING REQUIREMENTS
 
-Testing framework is initialized and ready for use. You MUST write tests for all code you implement.
+Testing framework is initialized and ready for use. Write tests for the code you implement; use the coverage
+guideline below as a default, and adjust it if this project's stakes call for more or less rigor.
 
-### Test Coverage Requirements
+### Test Coverage Guideline
 
-- **Unit Tests:** All business logic, services, utilities (≥ 80% coverage)
-- **Component Tests:** All Angular components with user interactions (≥ 80% coverage)
-- **Integration Tests:** REST endpoints, controllers, database operations (≥ 70% coverage)
+- **Unit Tests:** All business logic, services, utilities (~80% coverage as a default)
+- **Component Tests:** All Angular components with user interactions (~80% coverage as a default)
+- **Integration Tests:** REST endpoints, controllers, database operations (~70% coverage as a default)
 
 ### Writing Tests
 
@@ -380,7 +396,7 @@ Before reporting task complete:
 
 - [ ] All tests written for new code
 - [ ] All tests passing (`npm test`)
-- [ ] Coverage ≥ 80% for new code (`npm run test:coverage`)
+- [ ] Coverage meets this project's testing guideline for new code (`npm run test:coverage`)
 - [ ] No skipped or pending tests (unless explicitly documented)
 
 ### Test Quality Standards
@@ -391,7 +407,9 @@ Before reporting task complete:
 - Include edge cases and validation failures
 - Ensure tests are deterministic (no flaky tests)
 
-**Failure to write tests = Incomplete task regardless of code quality.**
+**Failure to write any tests = Incomplete task regardless of code quality.** A specific coverage percentage is a
+guideline to hit the spirit of "well-tested," not a hard gate — don't pad a suite with low-value tests just to
+move a number.
 
 ````
 
@@ -405,7 +423,7 @@ Before reporting task complete:
 ## Testing Strategy
 
 ### Test Coverage Plan
-**Target Coverage:** 80% for new code
+**Target Coverage:** [this project's guideline for new code — e.g. ~80%, adjusted to what the project needs]
 
 **Test Types Planned:**
 - [ ] Unit tests for [list components/services]
@@ -465,19 +483,23 @@ lib/services/my-service.ts | 85.2 | 78.5 | 90.0 | 84.8
 
 ## Coverage Enforcement Strategy
 
-### Phase 1: Soft Requirement (Initial Rollout)
+**Pick the enforcement level that matches this project — don't default to the strictest option.**
+
+### Option 1: Soft Guideline
 
 - Agents expected to write tests
 - Coverage tracked but not blocking
-- Orchestration partner reviews test quality during validation
+- Orchestration partner reviews test quality during validation, not just the number
+- Good fit for prototypes, internal tools, early-stage projects
 - Learn from test patterns in retrospectives
 
-### Phase 2: Hard Requirement (Current Standard)
+### Option 2: Hard Gate (For Projects That Warrant It)
 
 - Tests required for PR approval
-- CI blocks merge if coverage < 80%
+- CI blocks merge if coverage drops below the project's chosen threshold
 - Pre-completion validation enforced
-- Agent prompts include strict enforcement
+- Reserve this for projects where the stakes (production, compliance, payments, shared infrastructure) actually
+  justify a hard gate — it's not the default for every project
 
 ---
 

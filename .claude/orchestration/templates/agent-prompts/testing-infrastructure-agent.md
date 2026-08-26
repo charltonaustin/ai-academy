@@ -358,11 +358,11 @@ describe('MyComponent', () => {
 });
 ```
 
-#### Coverage Requirements
+#### Coverage Guideline
 
-- Minimum 80% coverage for service layers
-- All business logic must have unit tests
-- Critical user flows must have integration tests
+- ~80% coverage for service layers is a reasonable default — adjust to what this project actually needs
+- All business logic should have unit tests
+- Critical user flows should have integration tests
 
 ### CI/CD
 
@@ -382,7 +382,7 @@ You MUST maintain a detailed session log throughout your work.
 
 ### Log Setup
 1. **Create Log File:** `.claude/workspace/infrastructure/testing-framework-setup-session.md`
-2. **Use Template:** Infrastructure Agent Log template from `.claude/methodology/logging-templates.md`
+2. **Use Template:** Infrastructure Agent Log template from `.claude/orchestration/methodology/logging-templates.md`
 3. **Update Real-Time:** Log decisions, discoveries, and setup challenges
 
 ### Critical Logging Points
@@ -675,7 +675,8 @@ After this infrastructure is complete, ALL future agents will:
 
 - Write tests as part of their implementation
 - Run `npm test` as pre-completion validation
-- Achieve ≥ 80% coverage for their code
+- Meet this project's coverage guideline for their code (80% is a reasonable default, not a hard rule — adjust to
+  the project)
 - Use consistent testing patterns and mocking strategies
 
 **This is infrastructure that enables systematic quality across all future development.**

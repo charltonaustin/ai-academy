@@ -95,7 +95,7 @@ Essential infrastructure for greenfield projects.
 1. Install and configure Jest + Angular Testing Library
 2. Create test scripts in package.json
 3. Write example tests (service, component, controller)
-4. Configure coverage reporting with 80% thresholds
+4. Configure coverage reporting with thresholds (80% is a reasonable default — adjust to what this project needs)
 5. Create test utilities and mocking patterns
 6. Document testing patterns in tests/README.md
 
@@ -707,7 +707,7 @@ When adding new infrastructure prompts to this library:
 - [ ] All tests passing (unit + integration)
 - [ ] TypeScript: 0 errors
 - [ ] ESLint: 0 warnings
-- [ ] Test coverage > 80%
+- [ ] Test coverage meets this project's guideline (80% is a reasonable default, not a hard rule)
 - [ ] Integration tests exist (NO MOCKS)
 - [ ] Documentation complete (README, test guide)
 
