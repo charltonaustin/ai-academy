@@ -113,7 +113,7 @@ For multi-component features, explicit integration responsibility:
 
 ### Task A: {Task Name}
 
-**Template Used:** {template-name}.md (from `.claude/templates/agent-prompts/`)
+**Template Used:** {template-name}.md (from `.claude/orchestration/templates/agent-prompts/`)
 
 **Primary Objectives:**
 

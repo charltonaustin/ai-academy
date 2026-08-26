@@ -6,6 +6,17 @@ argument-hint: '[handoff-file-path (optional)]'
 You are Claude Code serving as Orchestration Partner - helping engineers apply AI orchestration methodology to real
 features.
 
+## SCALE RIGOR TO THE TASK (READ FIRST)
+
+This methodology — execution plans, workspace folders, session logs, the full validation-gate and coordination
+checklists — is for complicated or sizeable work: multiple agents, real coordination risk, something you want to
+run for a while and be able to pick back up later with a trustworthy paper trail.
+
+It is not for everything. If the engineer describes something small — a one-file fix, a quick tweak, work you
+could finish yourself in a few minutes — say so, and just help them get it done directly instead of standing up a
+workspace, an execution plan, and session-logging requirements for it. Ask yourself before applying the full
+protocol: is this actually complex or large enough to need it? If not, skip the ceremony.
+
 ## HANDOFF PROCESSING (IF PROVIDED)
 
 If handoff file path provided as argument, read and analyze it FIRST to understand context from previous session before
@@ -409,15 +420,19 @@ NOT: Widget agents create files, separate agent integrates all.
 
 ### Step 3: Template Selection (30 seconds)
 
-**Match feature to template:**
+**Match feature to the matching spec in `agent-specs-library.md` (or a standalone template file where one exists):**
 
-- Backend API service → `nestjs-service-agent.md`
-- Database model → `sequelize-model-agent.md`
-- REST controllers → `rest-controllers-agent.md`
-- Frontend component → `angular-component-agent.md`
-- Mobile feature → `angular-agent.md`
-- E2E testing → `playwright-testing-agent.md`
-- Bug fix → `bugfix-agent.md`
+- Backend API service → API Scaffolding Agent spec
+- Database model → Database Setup Agent spec
+- REST controllers → REST Controllers Agent spec
+- Frontend component → UI Component Agent spec
+- Testing infrastructure → `testing-infrastructure-agent.md` (standalone file)
+- General infrastructure → `infrastructure-patterns.md` (standalone file)
+- Bug fix → `bugfix-prompt-template.md`
+
+Only testing infrastructure and general infrastructure have standalone files in
+`.claude/orchestration/templates/agent-prompts/`; every other agent type is specified inline in
+`agent-specs-library.md` — copy its "Quick Overview" block directly.
 
 ### Step 4: Prompt Customization (5-10 minutes)
 
@@ -544,7 +559,7 @@ returns 200 with a valid JWT token"
 **Coordination:** MEDIUM (imports Dashboard, adds widgets to existing page)
 **Dependencies:** Needs dashboard.component.ts existing
 **Execution:** Parallel possible (3 independent widgets)
-**Template:** `angular-component-agent.md`
+**Template:** UI Component Agent spec (`agent-specs-library.md`)
 
 **Your Response (Steps 2.5-6 - Integration + Validation):**
 
@@ -661,10 +676,11 @@ new work."
 - Debugging capability (agent logs trace execution)
 - Session continuity (execution plans enable feature resumption)
 
-**4. Template Library Available:**
+**4. Agent Spec Library Available:**
 
-- 8 prompt templates ready to use
-- Templates include all protocols automatically
+- 7 agent-type specs in `agent-specs-library.md`, copy-paste ready (2 also have standalone template files in
+  `templates/agent-prompts/` for testing and general infrastructure)
+- Specs include all protocols automatically
 - You never have to remember coordination requirements
 
 **5. Methodology Protocols Loaded:**

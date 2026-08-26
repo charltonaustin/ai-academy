@@ -497,7 +497,7 @@ npm test
 
 **Created After:** Experience showed bug fixes can introduce new bugs due to missing validation requirements.
 
-**See:** `.claude/methodology/bugfix-prompt-template.md` for complete template.
+**See:** `.claude/orchestration/methodology/bugfix-prompt-template.md` for complete template.
 
 ### Key Requirements for ALL Bug Fix Prompts
 
@@ -555,7 +555,7 @@ npm test
 
 ---
 
-**Template Location:** `.claude/methodology/bugfix-prompt-template.md`
+**Template Location:** `.claude/orchestration/methodology/bugfix-prompt-template.md`
 **Usage:** Mandatory for ALL bug fix prompts
 **Evidence:** Experience showed bug fixes can introduce bugs due to incomplete validation requirements
 

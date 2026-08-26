@@ -20,7 +20,7 @@
 ### Handoff File Location
 
 ```
-.claude/meta/session-handoffs/{date}-{topic}.md
+.claude/orchestration/meta/session-handoffs/{date}-{topic}.md
 ```
 
 **Git status:** Can be gitignored (local context) or checked in (historical record)
@@ -69,7 +69,7 @@
 **1. Read handoff file:**
 
 ```bash
-/orchestration .claude/meta/session-handoffs/{handoff-file}.md
+/orchestration .claude/orchestration/meta/session-handoffs/{handoff-file}.md
 ```
 
 **2. Orchestration partner extracts:**

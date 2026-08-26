@@ -129,7 +129,7 @@ For each proposed parallel task, evaluate:
 ALL agents MUST maintain detailed session logs during execution:
 
 **Log Location:** `.claude/workspace/[feature]/agent-logs/[agent-name]-session.md`
-**Required Logging:** Use templates from `.claude/methodology/logging-templates.md`
+**Required Logging:** Use templates from `.claude/orchestration/methodology/logging-templates.md`
 **Critical Log Points:**
 
 - Technology stack decisions affecting other agents

@@ -427,7 +427,7 @@ Before completing:
 4. Process Cleanup: No hanging dev servers
 5. Manual Testing: Browser (frontend) OR curl (backend)
 
-**Full specifications:** @.claude/methodology/validation-gates.md
+**Full specifications:** @.claude/orchestration/methodology/validation-gates.md
 
 **IF ANY GATE FAILS:**
 -  Do NOT claim "COMPLETE"
@@ -455,7 +455,7 @@ Before completing:
 
 **Pattern:** Prevent regression through comprehensive validation requirements.
 
-**See:** `.claude/methodology/bugfix-prompt-template.md` for complete template.
+**See:** `.claude/orchestration/methodology/bugfix-prompt-template.md` for complete template.
 
 ### Key Requirements for ALL Bug Fix Prompts
 
@@ -512,7 +512,7 @@ Before completing:
 
 ---
 
-**Template Location:** `.claude/methodology/bugfix-prompt-template.md`
+**Template Location:** `.claude/orchestration/methodology/bugfix-prompt-template.md`
 **Usage:** Mandatory for ALL bug fix prompts
 **Why:** Prevents introducing new bugs while fixing existing ones
 
@@ -530,7 +530,7 @@ Before completing:
 **Why:** Tests can pass while features are completely broken (database schema not applied, integration points failing,
 etc.)
 
-**Full manual testing specifications:** @.claude/methodology/validation-gates.md (Gate 5)
+**Full manual testing specifications:** @.claude/orchestration/methodology/validation-gates.md (Gate 5)
 
 **Template for agent prompts:**
 
@@ -540,7 +540,7 @@ etc.)
 FRONTEND: Use Playwright MCP to verify in actual browser
 BACKEND: Use curl to verify API responses
 
-**See full testing requirements:** @.claude/methodology/validation-gates.md
+**See full testing requirements:** @.claude/orchestration/methodology/validation-gates.md
 
 **Document results in session log - feature NOT complete until manual testing passes**
 ```

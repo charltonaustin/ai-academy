@@ -160,7 +160,7 @@ Description of task and why it's important.
 1. **Initialize:**
 
    ```bash
-   /orchestration .claude/meta/session-handoffs/[this-file-name].md
+   /orchestration .claude/orchestration/meta/session-handoffs/[this-file-name].md
    ```
 
 2. **Immediate Task:**
@@ -210,5 +210,5 @@ Description of task and why it's important.
 ---
 
 **Handoff Created By:** Orchestration Partner
-**Session Continuation:** Use `/orchestration .claude/meta/session-handoffs/[this-file].md` in new session
+**Session Continuation:** Use `/orchestration .claude/orchestration/meta/session-handoffs/[this-file].md` in new session
 **Status:** [Ready for continuation / Awaiting decision / etc.]

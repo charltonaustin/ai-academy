@@ -5,8 +5,10 @@
 **Purpose:** Quick reference for understanding agent types, coordination requirements, and proven patterns from low/high
 coordination experiments.
 
-**For Detailed Specifications:** See `.claude/agents/[agent-name].md` for copy-paste ready prompts with all protocols
-included.
+**For Detailed Specifications:** Two agent types have standalone template files in
+`.claude/orchestration/templates/agent-prompts/` (`testing-infrastructure-agent.md`, `infrastructure-patterns.md`).
+For every other agent type below, the "Specification Template" / "Quick Overview" block in its section **is** the
+full spec — copy it directly into your prompt, there's no separate file to look up.
 
 **This File:** Evidence-based overview to help decide which agents to use for your feature.
 
@@ -21,8 +23,6 @@ learnings.
 **Coordination Requirements:** Minimal - basic naming conventions only
 **Quality Standards:** Production-ready database configuration + comprehensive migrations
 **Evidence:** Proven success - seamlessly integrated with other agents
-
-**Detailed Spec:** See `.claude/agents/database-setup.md` (to be created)
 
 **Quick Overview:**
 
@@ -58,7 +58,7 @@ learnings.
 
 ### SESSION LOGGING REQUIREMENT (MANDATORY):
 - Create: `.claude/workspace/[FEATURE]/agent-logs/database-agent-session.md`
-- Use: Infrastructure Agent Log template from `.claude/methodology/logging-templates.md`
+- Use: Infrastructure Agent Log template from `.claude/orchestration/methodology/logging-templates.md`
 - Log: Technology decisions, database design choices, integration setup decisions
 - Purpose: Teaching material for database setup methodology and coordination patterns
 ```
@@ -219,8 +219,6 @@ learnings.
 **Coordination Requirements:** HIGH - Contract-first approach with cross-agent validation required
 **Quality Standards:** Type-safe contract + comprehensive API design
 **Evidence:** Coordination challenges identified, systematic solutions developed
-
-**Detailed Spec:** See `.claude/agents/api-types.md` (to be created)
 
 **Quick Overview:**
 
@@ -423,30 +421,19 @@ Use this file to:
 - **See proven patterns** from low/high coordination experiments
 - **Get quick overview** of agent capabilities
 
-### Detailed Specifications (`.claude/agents/` directory)
+### Detailed Specifications (`.claude/orchestration/templates/agent-prompts/` directory)
 
-Use individual agent files for:
+Two agent types have a standalone file here, for when you want more than the inline "Quick Overview"/"Specification
+Template" blocks above:
 
-- **Copy-paste ready prompts** with all protocols included
-- **Complete task specifications** with validation checklists
-- **Full configuration examples** and code samples
-- **Execution-ready** for immediate agent launch
+- Testing Infrastructure Agent (`testing-infrastructure-agent.md`)
+- Infrastructure Agent (`infrastructure-patterns.md`)
 
-### Current Agent Library Status
-
-** Detailed Specs Available:**
-
-- Testing Infrastructure Agent (`.claude/agents/testing-infrastructure-agent.md`)
-
-**📝 To Be Created (Extract from this file):**
-
-- Database Setup Agent (`.claude/agents/database-setup.md`)
-- API Scaffolding Agent (`.claude/agents/api-scaffolding.md`)
-- UI Foundation Agent (`.claude/agents/ui-foundation.md`)
-- Deployment Config Agent (`.claude/agents/deployment-config.md`)
-- API Types Agent (`.claude/agents/api-types.md`)
-- REST Controllers Agent (`.claude/agents/rest-controllers.md`)
-- UI Component Agent (`.claude/agents/ui-component.md`)
+**Every other agent type in this file (Database Setup, API Scaffolding, UI Foundation, Deployment Config, API
+Types, REST Controllers, UI Component) does not have a separate template file.** Its "Quick Overview" /
+"Specification Template" block above is the complete, copy-paste-ready spec — use it directly rather than looking
+for a file that doesn't exist. If a pattern repeats often enough to be worth extracting into its own file, add it to
+`.claude/orchestration/templates/agent-prompts/` and update this section.
 
 ---
 

@@ -38,8 +38,8 @@ Proactive blocker removal before execution prevents stuck states and enables smo
 - [ ] **Read handoff file** (if session continuation)
 
   ```bash
-  # Check for handoff in .claude/meta/session-handoffs/
-  ls -la .claude/meta/session-handoffs/ | grep $(date +%Y-%m-%d)
+  # Check for handoff in .claude/orchestration/meta/session-handoffs/
+  ls -la .claude/orchestration/meta/session-handoffs/ | grep $(date +%Y-%m-%d)
   ```
 
 - [ ] **Understand previous outcomes:**
