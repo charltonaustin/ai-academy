@@ -360,23 +360,23 @@ company-api-service/
 
 ## Database Access
 
-- ✅ Use: Repository pattern (UserRepository.findById)
-- ❌ Never: Direct TypeORM queries in controllers
+-  Use: Repository pattern (UserRepository.findById)
+-  Never: Direct TypeORM queries in controllers
 
 ## API Responses
 
-- ✅ Use: ResponseDto wrapper with success/error structure
-- ❌ Never: Raw data returns
+-  Use: ResponseDto wrapper with success/error structure
+-  Never: Raw data returns
 
 ## Error Handling
 
-- ✅ Use: Custom exception filters (NotFoundException, ValidationException)
-- ❌ Never: Throw raw errors
+-  Use: Custom exception filters (NotFoundException, ValidationException)
+-  Never: Throw raw errors
 
 ## Testing
 
-- ✅ Use: Test fixtures in tests/fixtures/
-- ❌ Never: Inline test data
+-  Use: Test fixtures in tests/fixtures/
+-  Never: Inline test data
 ```
 
 **Methodology partner tells agents:** "Follow these patterns, don't invent new ones"
@@ -434,22 +434,22 @@ company-api-service/
 
 - ⚠️ EVERY database query MUST filter by tenantId
 - ⚠️ Failing to filter = data leak across tenants
-- ✅ Use: BaseRepository (includes tenant filter automatically)
-- ❌ NEVER: Raw queries without tenant filter
+-  Use: BaseRepository (includes tenant filter automatically)
+-  NEVER: Raw queries without tenant filter
 
 ## Session Token Rotation
 
 - ⚠️ Token rotation requires Redis AND database update
 - ⚠️ Order matters: Redis first, then database
-- ✅ Use: tokenRotation.service.ts (handles coordination)
-- ❌ NEVER: Update only one system (causes auth failures)
+-  Use: tokenRotation.service.ts (handles coordination)
+-  NEVER: Update only one system (causes auth failures)
 
 ## Environment-Specific Configurations
 
 - ⚠️ Callback URLs different per environment
 - ⚠️ Hard-coding URLs breaks staging/prod
-- ✅ Use: config.service.ts (loads from .env)
-- ❌ NEVER: Hard-code URLs in code
+-  Use: config.service.ts (loads from .env)
+-  NEVER: Hard-code URLs in code
 ```
 
 **Methodology partner tells agents:** "These gotchas are known, avoid them"
@@ -674,23 +674,23 @@ You are now a repo-aware methodology partner ready to orchestrate agents in this
 
 ## Code Organization
 
-- ✅ Follow: {Directory structure, file naming}
-- ❌ Avoid: {Anti-patterns}
+-  Follow: {Directory structure, file naming}
+-  Avoid: {Anti-patterns}
 
 ## Data Access
 
-- ✅ Use: {Repository pattern, ORM, query builder}
-- ❌ Never: {Raw SQL, direct DB access}
+-  Use: {Repository pattern, ORM, query builder}
+-  Never: {Raw SQL, direct DB access}
 
 ## API Design
 
-- ✅ Follow: {the existing codebase's API conventions (REST, GraphQL, gRPC, …)}
-- ❌ Avoid: {Inconsistent responses}
+-  Follow: {the existing codebase's API conventions (REST, GraphQL, gRPC, …)}
+-  Avoid: {Inconsistent responses}
 
 ## Testing
 
-- ✅ Use: {Test framework, mocking patterns}
-- ❌ Avoid: {Flaky tests, missing coverage}
+-  Use: {Test framework, mocking patterns}
+-  Avoid: {Flaky tests, missing coverage}
 ```
 
 **3. `.claude/meta/critical-gotchas.md`:**
@@ -794,30 +794,30 @@ Build email notification feature following existing repo patterns.
 
 ### For Engineers
 
-- ✅ Methodology transfer to real work (not just greenfield)
-- ✅ Repo context automatically loaded (no manual discovery)
-- ✅ Known gotchas avoided (documented by previous engineers)
-- ✅ Faster execution (optimal patterns known)
+-  Methodology transfer to real work (not just greenfield)
+-  Repo context automatically loaded (no manual discovery)
+-  Known gotchas avoided (documented by previous engineers)
+-  Faster execution (optimal patterns known)
 
 ### For Teams
 
-- ✅ Knowledge shared (`.claude/` checked in, everyone benefits)
-- ✅ Onboarding faster (new engineers run init, understand repo)
-- ✅ Consistency maintained (patterns documented and followed)
-- ✅ Quality compounds (each feature improves docs)
+-  Knowledge shared (`.claude/` checked in, everyone benefits)
+-  Onboarding faster (new engineers run init, understand repo)
+-  Consistency maintained (patterns documented and followed)
+-  Quality compounds (each feature improves docs)
 
 ### For Company
 
-- ✅ Methodology scales (works in all repos, not just new projects)
-- ✅ AI orchestration becomes company skill (not individual)
-- ✅ Compound learning (knowledge accumulates per repo)
-- ✅ Systematic approach (not ad-hoc AI usage)
+-  Methodology scales (works in all repos, not just new projects)
+-  AI orchestration becomes company skill (not individual)
+-  Compound learning (knowledge accumulates per repo)
+-  Systematic approach (not ad-hoc AI usage)
 
 ---
 
 ## Implementation Roadmap
 
-### Phase 1: Prove in new-crm (Greenfield) - ✅ DONE
+### Phase 1: Prove in new-crm (Greenfield) -  DONE
 
 - Built complete feature set with methodology
 - Documented all patterns, protocols, learnings
@@ -858,24 +858,24 @@ Build email notification feature following existing repo patterns.
 
 ### Technical Metrics
 
-- ✅ Feature delivered in brownfield repo (with orchestration)
-- ✅ Repo patterns followed
-- ✅ Existing systems integrated correctly (no recreated code)
-- ✅ Known gotchas avoided (no repeated failures)
+-  Feature delivered in brownfield repo (with orchestration)
+-  Repo patterns followed
+-  Existing systems integrated correctly (no recreated code)
+-  Known gotchas avoided (no repeated failures)
 
 ### Knowledge Metrics
 
-- ✅ `.claude/` documentation created (checked in)
-- ✅ Patterns documented (future engineers benefit)
-- ✅ Learnings captured (compound effect started)
-- ✅ Next engineer faster (knowledge transfer validated)
+-  `.claude/` documentation created (checked in)
+-  Patterns documented (future engineers benefit)
+-  Learnings captured (compound effect started)
+-  Next engineer faster (knowledge transfer validated)
 
 ### Methodology Metrics
 
-- ✅ Strategic orchestration works in brownfield
-- ✅ Pre-execution validation prevents brownfield blockers
-- ✅ Session handoffs work across repos
-- ✅ 100% success rate maintained (brownfield + greenfield)
+-  Strategic orchestration works in brownfield
+-  Pre-execution validation prevents brownfield blockers
+-  Session handoffs work across repos
+-  100% success rate maintained (brownfield + greenfield)
 
 ---
 
@@ -1002,10 +1002,10 @@ Build email notification feature following existing repo patterns.
 
 ## Status
 
-**Greenfield Curriculum:** ✅ Complete (systematic feature delivery validated)
-**Brownfield Design:** ✅ Conceptual design complete (needs implementation)
-**Integration Path:** ✅ Clear (Modules 7-8 extend Modules 1-6)
-**Scalability:** ✅ Proven (per-repo structure enables company-wide rollout)
+**Greenfield Curriculum:**  Complete (systematic feature delivery validated)
+**Brownfield Design:**  Conceptual design complete (needs implementation)
+**Integration Path:**  Clear (Modules 7-8 extend Modules 1-6)
+**Scalability:**  Proven (per-repo structure enables company-wide rollout)
 
 **Next Steps:**
 

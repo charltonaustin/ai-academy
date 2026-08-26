@@ -232,7 +232,7 @@ Now that your tools are set up, it's time to build. You'll be working at your ow
 
 ---
 
-**✅ Day 1 complete**
+** Day 1 complete**
 
 **See full trail:** [Companion overview](../README.md)
  

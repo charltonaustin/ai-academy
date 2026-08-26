@@ -19,13 +19,13 @@ problem and shows how to write tests that catch real bugs.
 **Common scenario:**
 
 ```
-✅ Tests: 47/47 passing
-✅ TypeScript: 0 errors
-✅ ESLint: 0 warnings
+ Tests: 47/47 passing
+ TypeScript: 0 errors
+ ESLint: 0 warnings
 
 [You deploy to production]
 
-❌ Runtime error: Cannot read property 'toISOString' of string
+ Runtime error: Cannot read property 'toISOString' of string
 ```
 
 **What happened?** Mocks created a false sense of security.
@@ -50,7 +50,7 @@ it('returns formatted data', async () => {
     const result = await leadService.getLeadSummary('123');
 
     expect(result.createdAt.toISOString()).toBe('2024-01-01T00:00:00.000Z');
-    // ✅ Test passes - mock returns Date, code expects Date
+    //  Test passes - mock returns Date, code expects Date
 });
 ```
 
@@ -62,7 +62,7 @@ const lead = await Lead.findByPk('123');
 
 console.log(typeof lead.createdAt);  // → "string" (PostgreSQL returns strings!)
 
-lead.createdAt.toISOString();  // ❌ TypeError: createdAt.toISOString is not a function
+lead.createdAt.toISOString();  //  TypeError: createdAt.toISOString is not a function
 ```
 
 **The problem:** Mock returned `new Date()`, PostgreSQL returns `"2024-01-01T00:00:00.000Z"` (string). Test passed,
@@ -106,7 +106,7 @@ AI agents default to heavily mocked tests because:
 **Unit tests (all mocked):**
 
 ```typescript
-// ✅ 8/8 unit tests passed
+//  8/8 unit tests passed
 describe('SystemAlert Service (unit)', () => {
     beforeEach(() => {
         jest.mock('../models/SystemAlert');
@@ -131,13 +131,13 @@ describe('SystemAlert Service (unit)', () => {
 **Production reality:**
 
 ```typescript
-// ❌ Runtime error in production
+//  Runtime error in production
 const alert = await alertService.createAlert({message: 'Critical error'});
 
 // PostgreSQL returns: { id: "550e8400-...", createdAt: "2024-01-01T00:00:00.000Z" }
 // Code expects:       { id: "550e8400-...", createdAt: Date object }
 
-alert.createdAt.toISOString();  // ❌ TypeError: createdAt.toISOString is not a function
+alert.createdAt.toISOString();  //  TypeError: createdAt.toISOString is not a function
 ```
 
 **Why the bug existed:**
@@ -164,13 +164,13 @@ return {
 **Integration test that WOULD have caught this:**
 
 ```typescript
-// ✅ Integration test (NO mocks)
+//  Integration test (NO mocks)
 it('returns Date objects', async () => {
     const alert = await alertService.createAlert({message: 'Test alert'});
 
     // Real database query, real type behavior
-    expect(alert.createdAt).toBeInstanceOf(Date);  // ❌ Would have failed
-    expect(alert.createdAt.toISOString()).toMatch(/\d{4}-\d{2}-\d{2}/);  // ❌ Would have failed
+    expect(alert.createdAt).toBeInstanceOf(Date);  //  Would have failed
+    expect(alert.createdAt.toISOString()).toMatch(/\d{4}-\d{2}-\d{2}/);  //  Would have failed
 });
 ```
 
@@ -181,7 +181,7 @@ it('returns Date objects', async () => {
 **Unit tests (all mocked):**
 
 ```typescript
-// ✅ 5/5 unit tests passed
+//  5/5 unit tests passed
 it('broadcasts to all users', async () => {
     const mockAlert = {
         id: 'test-123',  // ← Mock uses invalid UUID format
@@ -199,7 +199,7 @@ it('broadcasts to all users', async () => {
 **Production reality:**
 
 ```typescript
-// ❌ Database constraint violation
+//  Database constraint violation
 await alertService.publishAlert('test-123');
 // ERROR: invalid input syntax for type uuid: "test-123"
 ```
@@ -213,7 +213,7 @@ await alertService.publishAlert('test-123');
 **Integration test that WOULD have caught this:**
 
 ```typescript
-// ✅ Integration test (NO mocks)
+//  Integration test (NO mocks)
 it('requires valid UUID', async () => {
     await expect(
         alertService.publishAlert('test-123')  // Invalid UUID
@@ -232,7 +232,7 @@ it('works with valid UUID', async () => {
 
 ### The Pattern
 
-**❌ WRONG: All mocked (hides type mismatches)**
+** WRONG: All mocked (hides type mismatches)**
 
 ```typescript
 jest.mock('@/lib/services/notification.service');
@@ -244,7 +244,7 @@ it('creates alert', async () => {
 });
 ```
 
-**✅ CORRECT: Real database, real services (catches bugs)**
+** CORRECT: Real database, real services (catches bugs)**
 
 ```typescript
 // NO MOCKS - use real database
@@ -364,11 +364,11 @@ per_feature:
 
 **"Tests passing" means:**
 
-- ✅ All unit tests pass (WITH mocks)
-- ✅ All integration tests pass (NO mocks)
-- ✅ All e2e tests pass (full browser/API flow)
+-  All unit tests pass (WITH mocks)
+-  All integration tests pass (NO mocks)
+-  All e2e tests pass (full browser/API flow)
 
-**Not just:** "Unit tests pass" ✅
+**Not just:** "Unit tests pass" 
 
 ---
 
@@ -437,15 +437,15 @@ describe('LeadSummaryService (unit)', () => {
 
 **What unit tests validated:**
 
-- ✅ Service calls LLM with correct data
-- ✅ Error handling for missing lead
-- ✅ Error handling for LLM failure
+-  Service calls LLM with correct data
+-  Error handling for missing lead
+-  Error handling for LLM failure
 
 **What unit tests missed:**
 
-- ❌ Database query returns correct types
-- ❌ Summary persisted to database correctly
-- ❌ createdAt field is Date vs string
+-  Database query returns correct types
+-  Summary persisted to database correctly
+-  createdAt field is Date vs string
 
 **Tier 2: Integration Tests (NO mocks)**
 
@@ -511,11 +511,11 @@ describe('LeadSummaryService (integration)', () => {
 
 **What integration tests validated:**
 
-- ✅ Real database query works
-- ✅ Summary persisted correctly
-- ✅ createdAt field is correct type (Date)
-- ✅ Real LLM integration works (or fails correctly)
-- ✅ Update logic works end-to-end
+-  Real database query works
+-  Summary persisted correctly
+-  createdAt field is correct type (Date)
+-  Real LLM integration works (or fails correctly)
+-  Update logic works end-to-end
 
 **Result:** Integration test catches bugs unit tests missed.
 
@@ -600,15 +600,15 @@ describe('LeadService (unit)', () => {
 
 **What this validates:**
 
-- ✅ Service logic (business rules)
-- ✅ Error handling (validation, not found)
-- ✅ Mock interactions (correct parameters)
+-  Service logic (business rules)
+-  Error handling (validation, not found)
+-  Mock interactions (correct parameters)
 
 **What this misses:**
 
-- ❌ Real database behavior (string vs Date)
-- ❌ Database constraints (UUID format, NOT NULL)
-- ❌ Sequelize query correctness
+-  Real database behavior (string vs Date)
+-  Database constraints (UUID format, NOT NULL)
+-  Sequelize query correctness
 
 ### Integration Test Pattern (Real Database)
 
@@ -722,18 +722,18 @@ describe('LeadService (integration)', () => {
 
 **What this validates:**
 
-- ✅ Real database queries work
-- ✅ Correct types returned (Date vs string)
-- ✅ Database constraints enforced (UUID, NOT NULL)
-- ✅ Case sensitivity behavior
-- ✅ Persistence across queries
+-  Real database queries work
+-  Correct types returned (Date vs string)
+-  Database constraints enforced (UUID, NOT NULL)
+-  Case sensitivity behavior
+-  Persistence across queries
 
 **What unit tests would have missed:**
 
-- ❌ PostgreSQL returns strings for timestamps
-- ❌ UUID constraint violations
-- ❌ Email case sensitivity in database
-- ❌ NOT NULL constraints
+-  PostgreSQL returns strings for timestamps
+-  UUID constraint violations
+-  Email case sensitivity in database
+-  NOT NULL constraints
 
 ### REST Controller Integration Test
 
@@ -818,7 +818,7 @@ that unit tests miss.
 - [ ] **Integration tests (NO mocks):** Slower, test real system - catch bugs unit tests hide
 - [ ] **Both required:** Minimum 1 integration test per task (validates end-to-end flow)
 - [ ] **AI-generated code gotcha:** Agents default to mock-heavy tests that pass but miss real bugs
-- [ ] **"Tests passing" means:** Unit tests ✅ AND integration tests ✅ AND e2e tests ✅
+- [ ] **"Tests passing" means:** Unit tests  AND integration tests  AND e2e tests 
 - [ ] **Real examples matter:** Date string bug and invalid UUID bug both had passing unit tests
 - [ ] **Integration tests catch:** Database constraints, type mismatches, case sensitivity, JSON serialization
 

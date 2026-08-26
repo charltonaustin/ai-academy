@@ -11,8 +11,8 @@
 
 **What's Complete:**
 
-- ✅ [Completed item 1]
-- ✅ [Completed item 2]
+-  [Completed item 1]
+-  [Completed item 2]
 
 **What's In Progress:**
 

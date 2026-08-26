@@ -89,8 +89,8 @@ Orchestration Partner:
 "Before creating prompts, let's validate infrastructure:
 
 1. Context Recovery:
-   - Reading previous retrospectives... ✅
-   - Checking execution plans... ✅
+   - Reading previous retrospectives... 
+   - Checking execution plans... 
    - Found pattern: Always validate env vars early
 
 2. Infrastructure Check:
@@ -98,9 +98,9 @@ Orchestration Partner:
    - Let me verify what's ready..."
 
 Partner runs checks:
-  docker ps | grep postgres     → ✅ Running
-  curl localhost:3000/health    → ❌ Backend not running
-  cat .env.example | grep LLM   → ❌ OPENAI_API_KEY missing
+  docker ps | grep postgres     →  Running
+  curl localhost:3000/health    →  Backend not running
+  cat .env.example | grep LLM   →  OPENAI_API_KEY missing
 
 Partner: "Found blockers:
   - Backend server not running (start with: npm run dev)
@@ -110,7 +110,7 @@ Partner: "Found blockers:
 
 You: [Starts backend, adds API key to .env.example]
 
-Partner: "Infrastructure validated ✅ Creating prompts now..."
+Partner: "Infrastructure validated  Creating prompts now..."
 ```
 
 **What the orchestration partner does automatically:**
@@ -235,7 +235,7 @@ Partner: Creates 3 agent prompts (saved to files)
 You: Copy prompts → Launch 3 agents in parallel
 Agents: Each integrates their widget, verifies visible, runs 5 gates
 You: /validate → Comprehensive verification
-Result: ✅ Feature complete, integration verified, production ready
+Result:  Feature complete, integration verified, production ready
 ```
 
 **Time saved:** 30 min planning prevents 2-3 hours of debugging.
@@ -286,8 +286,8 @@ curl http://localhost:3000/leads
 docker exec -it postgres psql -U user -d dev_db -c "\d leads"
 # Verify 'summary' column exists
 
-# Not just: "Tests pass" ✅
-# But also: "Dev DB has schema" ✅
+# Not just: "Tests pass" 
+# But also: "Dev DB has schema" 
 ```
 
 ### Example 3: Service Dependencies
@@ -304,14 +304,14 @@ docker exec -it postgres psql -U user -d dev_db -c "\d leads"
 **Validation enhancement:**
 
 ```typescript
-// Unit test (WITH mocks) ✅
+// Unit test (WITH mocks) 
 it('generates summary', async () => {
     const mockLLM = {generate: jest.fn().mockResolvedValue('Summary')};
     const result = await service.generateSummary(lead, mockLLM);
     expect(result).toBe('Summary');
 });
 
-// Integration test (NO mocks) ✅
+// Integration test (NO mocks) 
 it('generates real summary using LLM API', async () => {
     const result = await service.generateSummary(lead);
     expect(result).toContain('lead');

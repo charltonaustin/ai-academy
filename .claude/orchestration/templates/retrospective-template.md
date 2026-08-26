@@ -7,7 +7,7 @@
 
 ---
 
-## What Went Well ✅
+## What Went Well 
 
 **Successes:**
 
@@ -29,7 +29,7 @@
 
 ---
 
-## What Didn't Go Well ❌
+## What Didn't Go Well 
 
 **Challenges:**
 

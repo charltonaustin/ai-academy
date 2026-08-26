@@ -199,14 +199,14 @@ Running agents:
 
 ### When Sub-Agents Are Worth It
 
-**✅ Good uses:**
+** Good uses:**
 
 - Large brownfield codebases (pattern discovery valuable)
 - Research-heavy tasks (synthesis needed)
 - Agent's context getting heavy (isolation helps)
 - Complex features with exploration phase
 
-**❌ Poor uses:**
+** Poor uses:**
 
 - Small greenfield codebases (no patterns to discover)
 - Simple straightforward tasks (overhead > benefit)
@@ -562,17 +562,17 @@ to implement Stripe integration following PCI compliance patterns..."
 
 **Create custom agent when:**
 
-- ✅ Pattern repeats frequently (3+ times)
-- ✅ Complex domain expertise required
-- ✅ Team needs consistent approach
-- ✅ Onboarding new developers (agent teaches patterns)
+-  Pattern repeats frequently (3+ times)
+-  Complex domain expertise required
+-  Team needs consistent approach
+-  Onboarding new developers (agent teaches patterns)
 
 **Just write detailed prompt when:**
 
-- ❌ One-off task (won't repeat)
-- ❌ Simple straightforward work
-- ❌ Pattern still evolving (not stable yet)
-- ❌ Built-in agent already sufficient
+-  One-off task (won't repeat)
+-  Simple straightforward work
+-  Pattern still evolving (not stable yet)
+-  Built-in agent already sufficient
 
 ### Example: Evolution from Prompt to Agent
 

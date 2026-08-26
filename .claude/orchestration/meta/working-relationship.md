@@ -37,14 +37,14 @@
 
 Orchestration partner automatically includes in EVERY agent prompt:
 
-- ✅ Session logging requirement (with template reference)
-- ✅ 5 validation gates (TypeScript, ESLint, tests, process cleanup, manual testing)
-- ✅ Testing requirements (unit + integration, no-mock integration tests)
-- ✅ Coordination protocols (field naming locks if high coordination)
-- ✅ Technology stack specifications (exact library versions, import patterns)
-- ✅ Quality standards (A+ code, professional practices)
-- ✅ Integration verification (who integrates what, where)
-- ✅ Specific success criteria (not "works" but "opening X shows Y")
+-  Session logging requirement (with template reference)
+-  5 validation gates (TypeScript, ESLint, tests, process cleanup, manual testing)
+-  Testing requirements (unit + integration, no-mock integration tests)
+-  Coordination protocols (field naming locks if high coordination)
+-  Technology stack specifications (exact library versions, import patterns)
+-  Quality standards (A+ code, professional practices)
+-  Integration verification (who integrates what, where)
+-  Specific success criteria (not "works" but "opening X shows Y")
 
 **You focus on feature strategy. Orchestration partner handles systematic coordination architecture.**
 

@@ -20,17 +20,17 @@
 
 **npm Scripts Pattern (Already Proven):**
 
-- ✅ Set up BEFORE feature agents need it
-- ✅ No functionality, just infrastructure
-- ✅ Enables all future agents immediately
-- ✅ Technology stack determined by project type
+-  Set up BEFORE feature agents need it
+-  No functionality, just infrastructure
+-  Enables all future agents immediately
+-  Technology stack determined by project type
 
 **Testing Framework Pattern (Same Approach):**
 
-- ✅ Created during initial setup phase (Task 0)
-- ✅ No tests yet, just infrastructure
-- ✅ Enables all future agents to write/run tests
-- ✅ Part of infrastructure before parallel execution
+-  Created during initial setup phase (Task 0)
+-  No tests yet, just infrastructure
+-  Enables all future agents to write/run tests
+-  Part of infrastructure before parallel execution
 
 **Why This Works:**
 When testing framework exists from Task 0, agents have NO EXCUSE for skipping tests. Infrastructure removes the blocker.
@@ -270,10 +270,10 @@ npm run test:cov          # Generate coverage report
 **BEFORE (Early Pattern):**
 ```markdown
 Task Complete When:
-- ✅ Feature implemented
-- ✅ TypeScript compilation passes
-- ✅ Linting passes
-- ✅ Session log complete
+-  Feature implemented
+-  TypeScript compilation passes
+-  Linting passes
+-  Session log complete
 ````
 
 **AFTER (Current Standard):**
@@ -281,12 +281,12 @@ Task Complete When:
 ```markdown
 Task Complete When:
 
-- ✅ Feature implemented
-- ✅ TypeScript compilation passes
-- ✅ Linting passes
-- ✅ Unit tests written and passing ← NEW
-- ✅ Coverage ≥ 80% for new code ← NEW
-- ✅ Session log complete (including test strategy)
+-  Feature implemented
+-  TypeScript compilation passes
+-  Linting passes
+-  Unit tests written and passing ← NEW
+-  Coverage ≥ 80% for new code ← NEW
+-  Session log complete (including test strategy)
 ```
 
 ### Pre-Completion Validation Enhanced
@@ -565,11 +565,11 @@ lib/services/my-service.ts | 85.2 | 78.5 | 90.0 | 84.8
 
 ## Status: Testing Methodology Systematized
 
-**✅ Root Cause Identified:** Testing framework not part of infrastructure-first pattern
-**✅ Solution Proven:** Infrastructure setup validated testing as Task 0 deliverable
-**✅ Agent Prompts Enhanced:** Testing requirements standard in all templates
-**✅ Methodology Updated:** Testing infrastructure pattern documented
-**✅ Coverage Strategy:** Soft rollout → hard enforcement → integration validation
+** Root Cause Identified:** Testing framework not part of infrastructure-first pattern
+** Solution Proven:** Infrastructure setup validated testing as Task 0 deliverable
+** Agent Prompts Enhanced:** Testing requirements standard in all templates
+** Methodology Updated:** Testing infrastructure pattern documented
+** Coverage Strategy:** Soft rollout → hard enforcement → integration validation
 
 **Ready for:** All future projects include testing framework in Task 0, enabling systematic quality validation from day
 one.

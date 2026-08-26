@@ -224,7 +224,7 @@ npm test
 
 ```bash
 # Verify clean environment
-pgrep -f jest || echo "No hanging processes ✅"
+pgrep -f jest || echo "No hanging processes "
 ```
 
 **Required:** Clean development environment, no resource leaks
@@ -291,10 +291,10 @@ per_feature:
 **Critical Pattern:**
 
 ```typescript
-// ❌ WRONG: All mocked (hides type mismatches)
+//  WRONG: All mocked (hides type mismatches)
 jest.mock('@/lib/services/notification.service');
 
-// ✅ CORRECT: Real database, real services
+//  CORRECT: Real database, real services
 test('integration: create notification end-to-end', async () => {
   // No mocks - executes actual SQL
   const notification = await notificationService.createAndPublish({...});
@@ -329,7 +329,7 @@ test('integration: create notification end-to-end', async () => {
 
 - `OPENAI_API_KEY` - **REQUIRED** - OpenAI API key for feature X
   - Status: ⚠️ NOT CONFIGURED (feature will fail)
-  - Testing: ❌ Feature NOT tested with real API
+  - Testing:  Feature NOT tested with real API
   - Next Steps: Engineer must add to .env.local before feature functional
 
 ### Required External Services
@@ -459,7 +459,7 @@ npm test
 
 ```bash
 # Verify clean environment
-pgrep -f jest || echo "No hanging processes ✅"
+pgrep -f jest || echo "No hanging processes "
 ```
 
 **Gate 5: Browser/Device Testing (features work)**
@@ -520,11 +520,11 @@ git worktree remove ../myapp-experiment
 
 **When NOT to Use:**
 
-- ❌ Short features with file isolation (single worktree sufficient)
-- ❌ Simple parallel execution (current patterns work well)
-- ✅ Long-running experiments (days/weeks)
-- ✅ High-risk changes requiring stable reference
-- ✅ Brownfield work where main worktree should stay pristine
+-  Short features with file isolation (single worktree sufficient)
+-  Simple parallel execution (current patterns work well)
+-  Long-running experiments (days/weeks)
+-  High-risk changes requiring stable reference
+-  Brownfield work where main worktree should stay pristine
 
 **Why It Matters:**
 
@@ -597,11 +597,11 @@ git town sync
 
 **When NOT to Use:**
 
-- ❌ Simple features (single PR sufficient)
-- ❌ Truly independent features (parallel, not stacked)
-- ✅ Multi-week complex features
-- ✅ Features requiring incremental review
-- ✅ Team environments with review bottlenecks
+-  Simple features (single PR sufficient)
+-  Truly independent features (parallel, not stacked)
+-  Multi-week complex features
+-  Features requiring incremental review
+-  Team environments with review bottlenecks
 
 **Why It Matters:**
 

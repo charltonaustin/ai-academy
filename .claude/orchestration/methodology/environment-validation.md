@@ -161,16 +161,16 @@ grep -r "process.env" <files-you-will-create>
 **Example:**
 
 ```typescript
-// ❌ BAD - Silent failure if missing
+//  BAD - Silent failure if missing
 const jwtSecret = process.env.JWT_SECRET;
 
-// ✅ GOOD - Clear error if required variable missing
+//  GOOD - Clear error if required variable missing
 const jwtSecret = process.env.JWT_SECRET;
 if (!jwtSecret) {
   throw new Error('JWT_SECRET environment variable is required. Add to .env file.');
 }
 
-// ✅ GOOD - Safe default for optional variable
+//  GOOD - Safe default for optional variable
 const port = process.env.PORT || 3000;
 ```
 
@@ -201,9 +201,9 @@ grep "DATABASE_URL" .env.example  # Should exist if you use it
 
 **IF YOU INTRODUCE NEW VARIABLES WITHOUT UPDATING .env.example:**
 
-- ❌ Feature is INCOMPLETE
-- ❌ Other engineers will get "undefined environment variable" errors
-- ❌ Update .env.example first, then re-validate
+-  Feature is INCOMPLETE
+-  Other engineers will get "undefined environment variable" errors
+-  Update .env.example first, then re-validate
 
 ```
 
@@ -248,12 +248,12 @@ comm -23 current-env-vars.txt documented-vars.txt
 I scanned the codebase and found these environment variables:
 
 **Currently documented in .env.example:**
-- DATABASE_URL ✅
-- JWT_SECRET ✅
-- PORT ✅
+- DATABASE_URL 
+- JWT_SECRET 
+- PORT 
 
 **Used in code but MISSING from .env.example:**
-- REDIS_URL ❌ (used in src/cache/redis.service.ts)
+- REDIS_URL  (used in src/cache/redis.service.ts)
 
 **Recommended action:**
 Before I create agent prompts, should I:
@@ -295,11 +295,11 @@ This ensures agents have complete environment schema when they start.
 **Actual secret values (UNSAFE):**
 
 ```markdown
-❌ DON'T: JWT_SECRET=abc123supersecret (actual value)
-✅ DO: JWT_SECRET=<generate-with-openssl-rand-base64-32> (template)
+ DON'T: JWT_SECRET=abc123supersecret (actual value)
+ DO: JWT_SECRET=<generate-with-openssl-rand-base64-32> (template)
 
-❌ DON'T: DATABASE_URL=postgresql://user:MyP@ssw0rd@... (actual password)
-✅ DO: DATABASE_URL=postgresql://postgres:password@localhost:5433/new_crm (placeholder)
+ DON'T: DATABASE_URL=postgresql://user:MyP@ssw0rd@... (actual password)
+ DO: DATABASE_URL=postgresql://postgres:password@localhost:5433/new_crm (placeholder)
 ```
 
 ---
@@ -361,7 +361,7 @@ echo "REDIS_URL=redis://localhost:6379" >> .env.example
 - REDIS_URL
   - Purpose: Redis cache connection
   - Default: redis://localhost:6379
-  - Added to .env.example: ✅
+  - Added to .env.example: 
 
 **Engineer action required:**
 1. If using Docker: Update docker-compose.yml to include Redis service
@@ -434,9 +434,9 @@ Orchestration Partner:
 I scanned the codebase for environment variables:
 
 Current variables in .env.example:
-- DATABASE_URL ✅
-- JWT_SECRET ✅
-- PORT ✅
+- DATABASE_URL 
+- JWT_SECRET 
+- PORT 
 
 Your feature will likely need:
 - REDIS_URL (for cache connection)

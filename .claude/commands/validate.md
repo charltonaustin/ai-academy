@@ -355,13 +355,13 @@ grep -r "## Decisions" .claude/workspace/{feature-id}/agent-logs/
 
 **Add validation findings to retrospective sections:**
 
-### What Went Well ✅ (Validation Confirmed)
+### What Went Well  (Validation Confirmed)
 
 - {Patterns that worked effectively}
 - {Quality code delivered}
 - {Coordination that prevented issues}
 
-### What Didn't Go Well ❌ (Bugs Found)
+### What Didn't Go Well  (Bugs Found)
 
 - Bug #{number}: {Description with file:line}
 - Testing gap: {What mocks hid}
@@ -411,25 +411,25 @@ grep -r "## Decisions" .claude/workspace/{feature-id}/agent-logs/
 
 ## Validation Results
 
-### TypeScript Compilation: {✅/❌}
+### TypeScript Compilation: {/}
 
 {Details}
 
-### ESLint: {✅/❌}
+### ESLint: {/}
 
 {Details}
 
-### Test Suite: {✅/❌}
+### Test Suite: {/}
 
 - Tests passing: {X/X}
 - Coverage: {percentage}
 - Hidden errors: {list if any}
 
-### Code Review: {✅/⚠️/❌}
+### Code Review: {/⚠️/}
 
 {Findings from pattern search}
 
-### Integration Testing: {✅/❌}
+### Integration Testing: {/}
 
 {Server startup, database validation results}
 
@@ -492,7 +492,7 @@ grep -r "## Decisions" .claude/workspace/{feature-id}/agent-logs/
 
 {Brief 2-3 sentence summary}
 
-### What Works ✅
+### What Works 
 
 - {Major functionality 1}
 - {Major functionality 2}
@@ -514,9 +514,9 @@ grep -r "## Decisions" .claude/workspace/{feature-id}/agent-logs/
 
 ### Documentation Created
 
-- ✅ Validation Report: `.claude/workspace/{feature-id}/validation-report.md`
-- ✅ Bug Fix Prompt: `.claude/workspace/{feature-id}/bugfix-prompt.md` (if bugs found)
-- ✅ Retrospective Updated: `.claude/workspace/{feature-id}/retrospective.md` (with validation findings)
+-  Validation Report: `.claude/workspace/{feature-id}/validation-report.md`
+-  Bug Fix Prompt: `.claude/workspace/{feature-id}/bugfix-prompt.md` (if bugs found)
+-  Retrospective Updated: `.claude/workspace/{feature-id}/retrospective.md` (with validation findings)
 
 ### Next Steps
 

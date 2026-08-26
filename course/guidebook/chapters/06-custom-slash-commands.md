@@ -396,9 +396,9 @@ Audit code quality of recent work:
 
 **Command naming:**
 
-- Use kebab-case: `/my-command` ✅
-- Not camelCase: `/myCommand` ❌
-- Not spaces: `/my command` ❌
+- Use kebab-case: `/my-command` 
+- Not camelCase: `/myCommand` 
+- Not spaces: `/my command` 
 
 **File location:**
 

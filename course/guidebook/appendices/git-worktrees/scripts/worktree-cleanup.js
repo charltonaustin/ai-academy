@@ -103,7 +103,7 @@ async function initConfig(repoRoot) {
   }
 
   fs.writeFileSync(configPath, JSON.stringify(DEFAULT_CONFIG, null, 2) + '\n');
-  console.log(`✅ Configuration file created at: ${configPath}`);
+  console.log(` Configuration file created at: ${configPath}`);
   console.log('');
   console.log('You can customize:');
   console.log('  - PR checking behavior');

@@ -149,7 +149,7 @@ ls src/components/widgets/ → See 2 existing widgets
 
 **What you learned:**
 
-- dashboard.component.ts exists ✅
+- dashboard.component.ts exists 
 - Uses grid layout
 - Widgets imported individually
 - Pattern: Each widget is separate component imported into Dashboard
@@ -210,10 +210,10 @@ grep -r "jwt" src/ → JWT service already configured
 
 **What you learned:**
 
-- User type in the shared API types ✅
-- Auth service with bcrypt ✅
-- Database model ready ✅
-- JWT infrastructure exists ✅
+- User type in the shared API types 
+- Auth service with bcrypt 
+- Database model ready 
+- JWT infrastructure exists 
 
 ### Phase 2: ASK (Requirements from Engineer)
 
@@ -247,17 +247,17 @@ grep -r "jwt" src/ → JWT service already configured
 
 ## Why This Matters
 
-✅ **Agent investigates technical reality** (what exists, current patterns)
-✅ **Engineer provides requirements** (what they want, where it goes, priorities)
-✅ **Prevents asking questions agent can answer** through codebase analysis
-✅ **Ensures prompts based on actual codebase state** (not assumptions)
-✅ **Applies to BOTH frontend and backend features**
+ **Agent investigates technical reality** (what exists, current patterns)
+ **Engineer provides requirements** (what they want, where it goes, priorities)
+ **Prevents asking questions agent can answer** through codebase analysis
+ **Ensures prompts based on actual codebase state** (not assumptions)
+ **Applies to BOTH frontend and backend features**
 
 ---
 
 ## Anti-Pattern: Asking Before Investigating
 
-❌ **DON'T:**
+ **DON'T:**
 
 ```
 Engineer: "I need analytics widgets"
@@ -266,7 +266,7 @@ Agent: "Where is Dashboard located?" ← Should grep for this
 Agent: "What's the integration pattern?" ← Should read existing widgets
 ```
 
-✅ **DO:**
+ **DO:**
 
 ```
 Engineer: "I need analytics widgets"

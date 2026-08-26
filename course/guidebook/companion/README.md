@@ -122,11 +122,11 @@
 
 **Every day includes:**
 
-- ✅ Clear goal and required features
-- ✅ Work at your own pace guidance
-- ✅ Stretch goals for fast engineers
-- ✅ Technical guidance and implementation details
-- ✅ References to methodology resources (optional)
+-  Clear goal and required features
+-  Work at your own pace guidance
+-  Stretch goals for fast engineers
+-  Technical guidance and implementation details
+-  References to methodology resources (optional)
 
 **Each day is self-contained** - everything you need in one file.
 

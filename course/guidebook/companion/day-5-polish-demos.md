@@ -228,20 +228,20 @@ Consider creating a custom slash command for instant repo context loading.
 
 **By end of this week, you've built:**
 
-- ✅ Complete CRM with CRUD operations
-- ✅ AI intelligence layer (summaries, scoring, recommendations)
-- ✅ Task management system
-- ✅ Authentication with protected routes
-- ✅ Real-time WebSocket notifications with persistence
-- ✅ Installable PWA (Angular service worker)
+-  Complete CRM with CRUD operations
+-  AI intelligence layer (summaries, scoring, recommendations)
+-  Task management system
+-  Authentication with protected routes
+-  Real-time WebSocket notifications with persistence
+-  Installable PWA (Angular service worker)
 
 **Technical accomplishments:**
 
-- ✅ 7+ major features implemented
-- ✅ Multi-platform (web + mobile)
-- ✅ 80%+ test coverage (unit + integration)
-- ✅ All 5 validation gates passing
-- ✅ Production-quality application
+-  7+ major features implemented
+-  Multi-platform (web + mobile)
+-  80%+ test coverage (unit + integration)
+-  All 5 validation gates passing
+-  Production-quality application
 
 ---
 
@@ -249,25 +249,25 @@ Consider creating a custom slash command for instant repo context loading.
 
 **Core methodology:**
 
-- ✅ Infrastructure-first pattern
-- ✅ Coordination through convention (field naming locks, schema as contract)
-- ✅ 5 validation gates (comprehensive quality standard)
-- ✅ Two-tier testing strategy
-- ✅ Sequential vs parallel execution analysis
-- ✅ Pre-execution validation protocol
-- ✅ Strategic orchestration with partner
+-  Infrastructure-first pattern
+-  Coordination through convention (field naming locks, schema as contract)
+-  5 validation gates (comprehensive quality standard)
+-  Two-tier testing strategy
+-  Sequential vs parallel execution analysis
+-  Pre-execution validation protocol
+-  Strategic orchestration with partner
 
 **Transferable skills:**
 
-- ✅ AI agent orchestration strategies
-- ✅ Multi-platform development (web + mobile)
-- ✅ Complex feature coordination
-- ✅ Testing strategies for AI features
-- ✅ Real-time systems implementation
-- ✅ Strategic vs tactical execution
-- ✅ Brownfield discovery patterns (investigation-first)
-- ✅ Pattern matching in existing codebases
-- ✅ Real company codebase application
+-  AI agent orchestration strategies
+-  Multi-platform development (web + mobile)
+-  Complex feature coordination
+-  Testing strategies for AI features
+-  Real-time systems implementation
+-  Strategic vs tactical execution
+-  Brownfield discovery patterns (investigation-first)
+-  Pattern matching in existing codebases
+-  Real company codebase application
 
 ---
 
@@ -300,6 +300,6 @@ brownfield codebases.
 
 ---
 
-**✅ Day 5 complete - Course finished!**
+** Day 5 complete - Course finished!**
 
 **See full trail:** [Companion overview](README.md)

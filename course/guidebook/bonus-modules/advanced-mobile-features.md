@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-**✅ Required before starting:**
+** Required before starting:**
 
 - PWA foundation complete (Day 4) - `@angular/pwa` added, service worker + manifest working
 - Lead list and detail views working
@@ -768,12 +768,12 @@ npx http-server dist/crm-frontend/browser -p 8080
 
 **After completing this module:**
 
-- ✅ Offline mode (app works without internet)
-- ✅ Web push notifications (alerts when app closed)
-- ✅ PWA CRUD (create/edit leads and tasks, offline-aware)
-- ✅ Geolocation check-ins (log meetings with location)
-- ✅ All validation gates passing
-- ✅ Verified via Lighthouse + DevTools (installed/offline)
+-  Offline mode (app works without internet)
+-  Web push notifications (alerts when app closed)
+-  PWA CRUD (create/edit leads and tasks, offline-aware)
+-  Geolocation check-ins (log meetings with location)
+-  All validation gates passing
+-  Verified via Lighthouse + DevTools (installed/offline)
 
 **Skills learned:**
 
@@ -792,6 +792,6 @@ npx http-server dist/crm-frontend/browser -p 8080
 
 ---
 
-**✅ Bonus Module: Advanced PWA Features**
+** Bonus Module: Advanced PWA Features**
 
 **Back to:** [Bonus Modules Overview](README.md)

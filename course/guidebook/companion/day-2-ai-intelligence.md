@@ -69,17 +69,17 @@ When you work directly with Claude Code on a feature, the same agent tries to bo
 
 This creates problems:
 
-- ❌ Strategic context lost during implementation
-- ❌ Forgets protocols/gates under execution pressure
-- ❌ Can't validate its own work objectively
-- ❌ No systematic learning between features
+-  Strategic context lost during implementation
+-  Forgets protocols/gates under execution pressure
+-  Can't validate its own work objectively
+-  No systematic learning between features
 
 **With strategic/tactical separation:**
 
-- ✅ Strategic thinking done once by orchestration partner (comprehensive planning)
-- ✅ Tactical agents are MORE effective (detailed instructions, no planning overhead)
-- ✅ Objective validation (different session reviews work)
-- ✅ Systematic learning captured (retrospectives improve future features)
+-  Strategic thinking done once by orchestration partner (comprehensive planning)
+-  Tactical agents are MORE effective (detailed instructions, no planning overhead)
+-  Objective validation (different session reviews work)
+-  Systematic learning captured (retrospectives improve future features)
 
 **Think of it like building a house:**
 
@@ -94,13 +94,13 @@ complete project context:
 
 **What it recovers:**
 
-- ✅ What's already built (reads workspace/ - a structured directory storing execution plans, agent prompts, session
+-  What's already built (reads workspace/ - a structured directory storing execution plans, agent prompts, session
   logs, and retrospectives for each feature, checks codebase)
-- ✅ Conventions used (camelCase, field naming, patterns)
-- ✅ What worked (reads retrospectives from completed features)
-- ✅ What failed (reads session logs, identifies anti-patterns)
-- ✅ Current infrastructure (Docker setup, testing framework, MCP servers)
-- ✅ In-progress features (execution plans, blockers identified)
+-  Conventions used (camelCase, field naming, patterns)
+-  What worked (reads retrospectives from completed features)
+-  What failed (reads session logs, identifies anti-patterns)
+-  Current infrastructure (Docker setup, testing framework, MCP servers)
+-  In-progress features (execution plans, blockers identified)
 
 **Think of it as:** Senior engineer who's built this type of feature, in this repository 100 times before
 
@@ -196,8 +196,8 @@ When each tactical agent runs, it writes a session log documenting:
 
 Created/updated during `/validate` command. Contains:
 
-- ✅ **What Went Well** - Patterns that worked effectively
-- ❌ **What Didn't Go Well** - Bugs found, issues encountered
+-  **What Went Well** - Patterns that worked effectively
+-  **What Didn't Go Well** - Bugs found, issues encountered
 - 💡 **Key Learnings** - Prevention strategies for future features
 - 🎯 **Action Items** - Fixes needed, methodology improvements
 
@@ -297,17 +297,17 @@ learned: validate JWT_SECRET in .env.example first. Ready to build next feature.
 
 **You still decide:**
 
-- ✅ What features to build
-- ✅ What order to build them
-- ✅ Technical approach and architecture
-- ✅ When to accept vs push back on suggestions
+-  What features to build
+-  What order to build them
+-  Technical approach and architecture
+-  When to accept vs push back on suggestions
 
 **Partner provides:**
 
-- ✅ Prompts for feature agents (with proven patterns for effective agent prompts built-in)
-- ✅ Coordination protocol documents
-- ✅ Validation gate enforcement
-- ✅ Documentation of methodology decisions
+-  Prompts for feature agents (with proven patterns for effective agent prompts built-in)
+-  Coordination protocol documents
+-  Validation gate enforcement
+-  Documentation of methodology decisions
 
 **The compound learning effect:**
 
@@ -360,11 +360,11 @@ Partner loads handoff → Recovers exact mid-feature state → Continues seamles
 
 **Why this matters:**
 
-- ✅ No "what was I doing?" confusion
-- ✅ Partner knows blockers already identified
-- ✅ Conventions preserved across sessions
-- ✅ Can pause/resume features without context loss
-- ✅ Works even weeks later (complete context snapshot)
+-  No "what was I doing?" confusion
+-  Partner knows blockers already identified
+-  Conventions preserved across sessions
+-  Can pause/resume features without context loss
+-  Works even weeks later (complete context snapshot)
 
 ---
 
@@ -382,8 +382,8 @@ Created/updated automatically during validation process.
 
 **What it captures:**
 
-- ✅ **What Went Well** - Patterns that worked effectively (even if no bugs)
-- ❌ **What Didn't Go Well** - Bugs found, issues encountered, root causes
+-  **What Went Well** - Patterns that worked effectively (even if no bugs)
+-  **What Didn't Go Well** - Bugs found, issues encountered, root causes
 - 💡 **Key Learnings** - Prevention strategies for future features
 - 🎯 **Action Items** - Fixes needed, methodology improvements, prompt updates
 
@@ -402,13 +402,13 @@ Created/updated automatically during validation process.
 ```markdown
 ## Feature: Dashboard Widgets
 
-### What Went Well ✅
+### What Went Well 
 
 - Parallel execution worked (3 widgets built simultaneously)
 - Each agent owned complete integration (widget + Dashboard import)
 - Validation caught bugs before production
 
-### What Didn't Go Well ❌
+### What Didn't Go Well 
 
 - Bug: Widget rendered but data not loading (REST call missing)
 - Bug: TypeScript passed but runtime error (mock hid type mismatch)
@@ -645,13 +645,13 @@ You: "Got it, makes sense. Proceed with prompts."
 
 **Each prompt automatically includes:**
 
-- ✅ Complete feature context
-- ✅ 5 validation gates
-- ✅ Testing requirements (unit WITH mocks + integration WITHOUT mocks)
-- ✅ Coordination protocols (camelCase, schema contracts)
-- ✅ Integration requirements (Frontend imports backend types)
-- ✅ Session logging instructions
-- ✅ Specific success criteria
+-  Complete feature context
+-  5 validation gates
+-  Testing requirements (unit WITH mocks + integration WITHOUT mocks)
+-  Coordination protocols (camelCase, schema contracts)
+-  Integration requirements (Frontend imports backend types)
+-  Session logging instructions
+-  Specific success criteria
 
 ---
 
@@ -763,14 +763,14 @@ Partner: Updates prompt → Changes LLM provider instructions
 **Scenario A - Validation passes:**
 
 ```
-Partner: "✅ Validation complete. Feature is production ready. Retrospective created."
+Partner: " Validation complete. Feature is production ready. Retrospective created."
 You: Move to next feature
 ```
 
 **Scenario B - Validation finds bugs:**
 
 ```
-Partner: "❌ Found 2 bugs:
+Partner: " Found 2 bugs:
 Bug #1: Summary displays but data not loading (controller/service missing await)
 Bug #2: Test passed but runtime fails (mock hid type mismatch)
 
@@ -801,8 +801,8 @@ Created:
 
 **Contains:**
 
-- ✅ What worked (parallel execution, integration explicit)
-- ❌ What failed (controller bug, mock hid type issue)
+-  What worked (parallel execution, integration explicit)
+-  What failed (controller bug, mock hid type issue)
 - 💡 Learnings (always use await in controllers/services, integration tests catch mocks)
 - 🎯 Actions (update prompts: add await reminder, require integration tests)
 
@@ -850,9 +850,9 @@ Step 8: Run /validate
    ↓  (Partner reviews: execution-plan.md + agent-logs/)
    ↓  (Comprehensive: gates + code review + integration testing)
    ↓
-   ├─── ✅ PRODUCTION READY? ──→ Go to Step 10
+   ├───  PRODUCTION READY? ──→ Go to Step 10
    │
-   └─── ❌ BUGS FOUND? ──→ Go to Step 9
+   └───  BUGS FOUND? ──→ Go to Step 9
 
 ```
 
@@ -953,11 +953,11 @@ Partner: Suggests test scenarios based on execution plan
 
 **Why this matters:**
 
-- ✅ **Maintain code ownership** - You stay engaged with what's being built
-- ✅ **Catch issues early** - Discuss architecture while agents work, not after
-- ✅ **Sequential clarity** - Plan next feature, execute when ready (not parallel chaos)
-- ✅ **Quality awareness** - Review and understand changes before they become PRs
-- ✅ **Prevent tech debt** - Active oversight vs. blindly accepting AI output
+-  **Maintain code ownership** - You stay engaged with what's being built
+-  **Catch issues early** - Discuss architecture while agents work, not after
+-  **Sequential clarity** - Plan next feature, execute when ready (not parallel chaos)
+-  **Quality awareness** - Review and understand changes before they become PRs
+-  **Prevent tech debt** - Active oversight vs. blindly accepting AI output
 
 **The result:** You write 5% of the code but maintain 100% understanding and ownership.
 
@@ -1065,7 +1065,7 @@ A: Partner explicitly states status:
 **Passed:**
 
 ```
-✅ Validation complete. Feature is PRODUCTION READY.
+ Validation complete. Feature is PRODUCTION READY.
 - All 5 gates passed
 - Integration testing successful
 - Retrospective created
@@ -1074,7 +1074,7 @@ A: Partner explicitly states status:
 **Failed:**
 
 ```
-❌ Validation found 2 bugs:
+ Validation found 2 bugs:
 - Bug #1: controller/service missing await (file:line)
 - Bug #2: Mock hid type mismatch (file:line)
 
@@ -1711,14 +1711,14 @@ An AI agent that analyzes YOUR actual CRM codebase and generates personalized fe
 
 ## Current State Analysis
 
-- ✅ Lead management (CRUD)
-- ✅ Interaction tracking
-- ✅ AI summaries and scoring
-- ✅ Task recommendations
-- ❌ Email integration (missing)
-- ❌ Calendar scheduling (missing)
-- ❌ Deal pipeline (missing)
-- ❌ Team collaboration (missing)
+-  Lead management (CRUD)
+-  Interaction tracking
+-  AI summaries and scoring
+-  Task recommendations
+-  Email integration (missing)
+-  Calendar scheduling (missing)
+-  Deal pipeline (missing)
+-  Team collaboration (missing)
 
 ## Competitive Analysis
 
@@ -1812,6 +1812,6 @@ workflow.
 
 ---
 
-**✅ Day 2 complete**
+** Day 2 complete**
 
 **See full trail:** [Companion overview](README.md)

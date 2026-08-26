@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-**✅ Required before starting:**
+** Required before starting:**
 
 - JWT authentication complete (Day 3)
 - User model with passwordHash exists
@@ -633,13 +633,13 @@ GOOGLE_CALLBACK_URL=https://your-domain.com/api/auth/google/callback
 
 **After completing this module:**
 
-- ✅ "Sign in with Google" button on login page
-- ✅ OAuth 2.0 flow working (redirect → consent → callback)
-- ✅ New users created automatically from Google profile
-- ✅ Existing users can link Google account
-- ✅ JWT token generated (same auth flow as password)
-- ✅ All validation gates passing
-- ✅ Browser tested and working
+-  "Sign in with Google" button on login page
+-  OAuth 2.0 flow working (redirect → consent → callback)
+-  New users created automatically from Google profile
+-  Existing users can link Google account
+-  JWT token generated (same auth flow as password)
+-  All validation gates passing
+-  Browser tested and working
 
 **Skills learned:**
 
@@ -687,6 +687,6 @@ GOOGLE_CALLBACK_URL=https://your-domain.com/api/auth/google/callback
 
 ---
 
-**✅ Bonus Module: Google OAuth**
+** Bonus Module: Google OAuth**
 
 **Back to:** [Bonus Modules Overview](README.md)

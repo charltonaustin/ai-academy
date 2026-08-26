@@ -56,9 +56,9 @@ because the terminology can be confusing!
 
 **Use when:**
 
-- ✅ Tool is universally useful (Context7, Filesystem)
-- ✅ Configuration is the same across all projects
-- ✅ You want the tool available everywhere you work
+-  Tool is universally useful (Context7, Filesystem)
+-  Configuration is the same across all projects
+-  You want the tool available everywhere you work
 
 **Example user scope config:**
 
@@ -98,9 +98,9 @@ because the terminology can be confusing!
 
 **Use when:**
 
-- ✅ Tool is needed by the whole team (Serena for brownfield analysis)
-- ✅ Configuration should be version controlled
-- ✅ Want to ensure consistent tooling across team members
+-  Tool is needed by the whole team (Serena for brownfield analysis)
+-  Configuration should be version controlled
+-  Want to ensure consistent tooling across team members
 
 **Example project scope config:**
 
@@ -141,9 +141,9 @@ because the terminology can be confusing!
 
 **Use when:**
 
-- ✅ You want project-specific configuration that's NOT shared with team
-- ✅ Testing a new MCP server before sharing with team
-- ✅ Personal overrides for your development workflow
+-  You want project-specific configuration that's NOT shared with team
+-  Testing a new MCP server before sharing with team
+-  Personal overrides for your development workflow
 
 **How it works:**
 
@@ -177,9 +177,9 @@ If you have `serena` configured in all three scopes, Claude Code will use:
 
 | Scope       | Location                            | Shared with Team | Committed to Git |
 |-------------|-------------------------------------|------------------|------------------|
-| **user**    | `~/.claude.json`                    | ❌ No             | ❌ No             |
-| **project** | `.mcp.json`                         | ✅ Yes            | ✅ Yes            |
-| **local**   | `~/.claude.json` (project-specific) | ❌ No             | ❌ No             |
+| **user**    | `~/.claude.json`                    |  No             |  No             |
+| **project** | `.mcp.json`                         |  Yes            |  Yes            |
+| **local**   | `~/.claude.json` (project-specific) |  No             |  No             |
 
 ---
 
@@ -654,20 +654,20 @@ claude mcp add @package/name
 
 **Do:**
 
-- ✅ Install universal tools with `--scope user` (Context7, Filesystem)
-- ✅ Install team-shared tools with `--scope project` (Serena for brownfield)
-- ✅ Use `--scope local` (default) for personal project-specific overrides
-- ✅ Commit `.mcp.json` to version control (contains project scope servers)
-- ✅ Document custom MCP servers in project README
-- ✅ Use environment variables for API keys (don't commit secrets)
+-  Install universal tools with `--scope user` (Context7, Filesystem)
+-  Install team-shared tools with `--scope project` (Serena for brownfield)
+-  Use `--scope local` (default) for personal project-specific overrides
+-  Commit `.mcp.json` to version control (contains project scope servers)
+-  Document custom MCP servers in project README
+-  Use environment variables for API keys (don't commit secrets)
 
 **Don't:**
 
-- ❌ Confuse `--scope project` with "just for this project" (it means team-shared!)
-- ❌ Duplicate servers across scopes unless you need to override
-- ❌ Commit API keys to version control
-- ❌ Install every MCP server you find (context overhead)
-- ❌ Use `--scope user` for project-specific tools
+-  Confuse `--scope project` with "just for this project" (it means team-shared!)
+-  Duplicate servers across scopes unless you need to override
+-  Commit API keys to version control
+-  Install every MCP server you find (context overhead)
+-  Use `--scope user` for project-specific tools
 
 ---
 
@@ -682,9 +682,9 @@ claude mcp add --scope project serena -- npx -y @oraios/serena --cwd .
 
 **What actually happens:**
 
-- ✅ Creates/updates `.mcp.json` in your project directory
-- ✅ Available to EVERYONE on the team (when they pull the repo)
-- ✅ Meant to be committed to git
+-  Creates/updates `.mcp.json` in your project directory
+-  Available to EVERYONE on the team (when they pull the repo)
+-  Meant to be committed to git
 
 **If you wanted it just for you:**
 

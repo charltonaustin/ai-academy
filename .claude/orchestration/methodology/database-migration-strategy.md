@@ -56,7 +56,7 @@ CREATE TABLE leads (
 - Modifying existing schemas incrementally
 
 **Command:** `psql $DATABASE_URL -f scripts/migrations/XXX-description.sql`
-**✅ SAFE:** Preserves all existing data
+** SAFE:** Preserves all existing data
 
 **Example:**
 
@@ -232,7 +232,7 @@ psql $DATABASE_URL -c "\d table_name"
 **Unsafe workflow (avoid):**
 
 ```bash
-# ❌ DON'T DO THIS if you have data you want to keep:
+#  DON'T DO THIS if you have data you want to keep:
 npm run db:migrate  # This drops all tables!
 ```
 
@@ -297,12 +297,12 @@ psql new_crm -f scripts/migrations/XXX-new-migration.sql
 
 **For all future features requiring database changes:**
 
-1. ✅ Feature agent creates migration file in `scripts/migrations/`
-2. ✅ Migration file uses additive-only commands (`ALTER TABLE ... ADD COLUMN IF NOT EXISTS`)
-3. ✅ Agent updates `src/db/schema.sql` to reflect final state (for documentation)
-4. ✅ Agent documents command to run: `psql $DATABASE_URL -f scripts/migrations/XXX.sql`
-5. ✅ Session log includes: "Migration tested, data preserved"
-6. ❌ Agent NEVER suggests `npm run db:migrate` for feature changes
+1.  Feature agent creates migration file in `scripts/migrations/`
+2.  Migration file uses additive-only commands (`ALTER TABLE ... ADD COLUMN IF NOT EXISTS`)
+3.  Agent updates `src/db/schema.sql` to reflect final state (for documentation)
+4.  Agent documents command to run: `psql $DATABASE_URL -f scripts/migrations/XXX.sql`
+5.  Session log includes: "Migration tested, data preserved"
+6.  Agent NEVER suggests `npm run db:migrate` for feature changes
 
 ---
 
@@ -310,21 +310,21 @@ psql new_crm -f scripts/migrations/XXX-new-migration.sql
 
 **Original Pattern (Initial Implementation):**
 
-- Infrastructure-first: Setup database BEFORE parallel agents run ✅
-- Single schema file with DROP commands ✅ (for fresh setups)
+- Infrastructure-first: Setup database BEFORE parallel agents run 
+- Single schema file with DROP commands  (for fresh setups)
 
 **Gap Discovered:**
 
-- No incremental migration strategy ❌
-- Feature changes triggered full schema rebuild ❌
-- Data loss on feature additions ❌
+- No incremental migration strategy 
+- Feature changes triggered full schema rebuild 
+- Data loss on feature additions 
 
 **Enhanced Pattern:**
 
-- Infrastructure-first: Setup database BEFORE parallel agents run ✅
-- Initial schema file for fresh setups (`schema.sql` with DROP) ✅
-- **Incremental migration directory for feature additions (`migrations/` without DROP)** ✅ NEW
-- **Clear documentation of when to use which approach** ✅ NEW
+- Infrastructure-first: Setup database BEFORE parallel agents run 
+- Initial schema file for fresh setups (`schema.sql` with DROP) 
+- **Incremental migration directory for feature additions (`migrations/` without DROP)**  NEW
+- **Clear documentation of when to use which approach**  NEW
 
 ---
 

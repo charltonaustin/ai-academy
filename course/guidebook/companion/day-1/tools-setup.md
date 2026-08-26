@@ -72,17 +72,17 @@ This confirms the action worked (or shows errors).
 
 **Do:**
 
-- ✅ Be specific about tech stack (NestJS, Sequelize, etc.)
-- ✅ Reference existing files/patterns when relevant
-- ✅ Let Claude work through debugging (up to 3 attempts)
-- ✅ Verify files actually changed (editor shows edits)
+-  Be specific about tech stack (NestJS, Sequelize, etc.)
+-  Reference existing files/patterns when relevant
+-  Let Claude work through debugging (up to 3 attempts)
+-  Verify files actually changed (editor shows edits)
 
 **Don't:**
 
-- ❌ Give vague instructions ("make it work")
-- ❌ Interrupt mid-workflow (let it complete the plan)
-- ❌ Expect persistent memory across sessions (provide context each time)
-- ❌ Assume errors are Claude's fault (often environment/setup issues)
+-  Give vague instructions ("make it work")
+-  Interrupt mid-workflow (let it complete the plan)
+-  Expect persistent memory across sessions (provide context each time)
+-  Assume errors are Claude's fault (often environment/setup issues)
 
 ---
 
@@ -339,9 +339,9 @@ claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp
 
 **When to use project-specific config:**
 
-- ✅ Project needs special MCP servers not used globally (like Serena for brownfield)
-- ✅ Project requires different MCP configuration (specific API keys, paths)
-- ❌ Don't duplicate servers that work fine globally (Playwright, Context7)
+-  Project needs special MCP servers not used globally (like Serena for brownfield)
+-  Project requires different MCP configuration (specific API keys, paths)
+-  Don't duplicate servers that work fine globally (Playwright, Context7)
 
 **Note:** Project-specific servers are **additional** to global servers, not replacements.
 
@@ -555,9 +555,9 @@ terminal) for better stability and infinite scrollback.
 
 **To be clear:** Using the `/ide` command to connect to your editor is great! What I'm recommending against is:
 
-- ❌ Starting Claude Code sessions from within the IDE extension UI itself
+-  Starting Claude Code sessions from within the IDE extension UI itself
 
-**Instead:** ✅ Run `claude` in a standalone terminal app (iTerm2, Warp, Alacritty, etc.), then use `/ide` to connect it
+**Instead:**  Run `claude` in a standalone terminal app (iTerm2, Warp, Alacritty, etc.), then use `/ide` to connect it
 to your editor
 
 **Why standalone terminals work better:**

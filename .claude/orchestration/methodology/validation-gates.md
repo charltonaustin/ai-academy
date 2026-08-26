@@ -204,14 +204,14 @@ curl -X POST http://localhost:3000/auth/login \
 ### Gate 5: Manual Testing
 
 FRONTEND (if applicable):
-- Browser testing: ✅ All features work
+- Browser testing:  All features work
 - Console errors: None
 - Playwright results: [details]
 
 BACKEND (if applicable):
-- curl testing: ✅ API returns expected responses
-- Authentication: ✅ Works correctly
-- Error handling: ✅ Proper responses
+- curl testing:  API returns expected responses
+- Authentication:  Works correctly
+- Error handling:  Proper responses
 
 **All 5 gates passed: YES**
 ```
@@ -222,10 +222,10 @@ BACKEND (if applicable):
 
 **IF ANY GATE FAILS:**
 
-❌ Do NOT claim "COMPLETE"
-❌ Fix errors first
-❌ Re-run ALL validation steps
-✅ Only claim "COMPLETE" after ALL validations pass
+ Do NOT claim "COMPLETE"
+ Fix errors first
+ Re-run ALL validation steps
+ Only claim "COMPLETE" after ALL validations pass
 
 **Claiming "COMPLETE" without passing all 5 gates = INCOMPLETE TASK**
 
@@ -235,9 +235,9 @@ BACKEND (if applicable):
 
 **Evidence from building real features:**
 
-- ✅ TypeScript: 0 errors ≠ tests pass (test-related TypeScript errors exist)
-- ✅ Tests: All passing ≠ browser works (database setup issues only caught in browser)
-- ✅ Browser: Works ≠ clean environment (resource exhaustion from hanging processes)
+-  TypeScript: 0 errors ≠ tests pass (test-related TypeScript errors exist)
+-  Tests: All passing ≠ browser works (database setup issues only caught in browser)
+-  Browser: Works ≠ clean environment (resource exhaustion from hanging processes)
 
 **All 5 gates = truly complete**
 

@@ -311,6 +311,6 @@ These build on the foundation and are detailed in the **Advanced PWA Features** 
 
 ---
 
-**✅ Day 4 complete**
+** Day 4 complete**
 
 **See full trail:** [Companion overview](README.md)

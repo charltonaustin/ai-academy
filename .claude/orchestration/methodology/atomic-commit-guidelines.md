@@ -20,7 +20,7 @@ You MUST follow atomic commit practices throughout your implementation. This mak
 
 1. **One logical change per commit**
    - If you need "and" in your commit message, it might need to be split
-   - Example: ✅ "Add [Component] with [specific feature]" ❌ "Add service and tests and types and controllers"
+   - Example:  "Add [Component] with [specific feature]"  "Add service and tests and types and controllers"
 
 2. **Commit working code**
    - Each commit should leave the codebase in a working state
@@ -129,11 +129,11 @@ Frontend commits:
 
 Atomic commits are part of the comprehensive **Quality Standards** that apply to all agent work:
 
-- ✅ A+ code quality
-- ✅ Professional git practices (atomic commits)
-- ✅ Test coverage requirements (≥ 80% backend)
-- ✅ Type safety enforcement (TypeScript strict mode)
-- ✅ Accessibility standards (WCAG 2.1 AA)
+-  A+ code quality
+-  Professional git practices (atomic commits)
+-  Test coverage requirements (≥ 80% backend)
+-  Type safety enforcement (TypeScript strict mode)
+-  Accessibility standards (WCAG 2.1 AA)
 
 ## Pre-commit Hook Enforcement
 
@@ -194,7 +194,7 @@ Responsive: Tested mobile and desktop
 
 ## Anti-Patterns to Avoid
 
-### ❌ Bad: Massive "Add Feature" Commit
+###  Bad: Massive "Add Feature" Commit
 
 ```
 feat: add AI summaries
@@ -212,7 +212,7 @@ Files changed: 47
 
 **Problem:** Impossible to review atomically, mixes concerns, includes unrelated changes
 
-### ✅ Good: Logical Sequence
+###  Good: Logical Sequence
 
 ```
 1. feat: add Vercel AI SDK dependencies
@@ -228,9 +228,9 @@ Files changed: 47
 
 ## Status: Mandatory for All Agent Prompts
 
-**✅ Standard Protocol:** Include in every feature development agent prompt
-**✅ Quality Gate:** Pre-commit hooks enforce standards automatically
-**✅ Teaching Value:** Demonstrates professional development practices
-**✅ Review Efficiency:** Makes code review process significantly easier
+** Standard Protocol:** Include in every feature development agent prompt
+** Quality Gate:** Pre-commit hooks enforce standards automatically
+** Teaching Value:** Demonstrates professional development practices
+** Review Efficiency:** Makes code review process significantly easier
 
 **Agents must follow these guidelines to maintain professional git history and enable efficient code review.**

@@ -67,11 +67,11 @@ brew install git-town
 
 ## When NOT to Use
 
-- ❌ Simple features (single PR sufficient)
-- ❌ Truly independent features (parallel, not stacked)
-- ✅ Multi-week complex features
-- ✅ Team review bottlenecks
-- ✅ Incremental approval desired
+-  Simple features (single PR sufficient)
+-  Truly independent features (parallel, not stacked)
+-  Multi-week complex features
+-  Team review bottlenecks
+-  Incremental approval desired
 
 ---
 

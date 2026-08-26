@@ -63,10 +63,10 @@ Review PR in one worktree, continue development in another
 
 ## When NOT to Use
 
-- ❌ Short features with file isolation
-- ❌ Simple parallel execution (current patterns work)
-- ✅ Long-running experiments (days/weeks)
-- ✅ High-risk changes requiring stable reference
+-  Short features with file isolation
+-  Simple parallel execution (current patterns work)
+-  Long-running experiments (days/weeks)
+-  High-risk changes requiring stable reference
 
 ---
 

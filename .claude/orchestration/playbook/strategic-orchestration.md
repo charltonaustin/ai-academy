@@ -205,10 +205,10 @@ Follow the prompt exactly, including all validation gates.
 
 **Positive indicators:**
 
-- ✅ Agent makes steady progress (no long stuck periods)
-- ✅ Agent focuses on implementation (not debugging infrastructure)
-- ✅ Agent doesn't ask for guidance on blockers (already removed)
-- ✅ Agent completes validation gates systematically
+-  Agent makes steady progress (no long stuck periods)
+-  Agent focuses on implementation (not debugging infrastructure)
+-  Agent doesn't ask for guidance on blockers (already removed)
+-  Agent completes validation gates systematically
 
 **Warning indicators:**
 
@@ -221,17 +221,17 @@ Follow the prompt exactly, including all validation gates.
 
 **Success metrics:**
 
-- ✅ All validation gates passed (TypeScript, ESLint, tests, device/browser testing)
-- ✅ Feature complete and working
-- ✅ No major blockers discovered during execution
-- ✅ Time efficient (proactive overhead < reactive debugging)
+-  All validation gates passed (TypeScript, ESLint, tests, device/browser testing)
+-  Feature complete and working
+-  No major blockers discovered during execution
+-  Time efficient (proactive overhead < reactive debugging)
 
 **Failure metrics:**
 
-- ❌ Validation gates failed (errors/warnings)
-- ❌ Feature incomplete or blocked
-- ❌ Multiple blockers discovered during execution
-- ❌ Time wasted on infrastructure debugging
+-  Validation gates failed (errors/warnings)
+-  Feature incomplete or blocked
+-  Multiple blockers discovered during execution
+-  Time wasted on infrastructure debugging
 
 ---
 

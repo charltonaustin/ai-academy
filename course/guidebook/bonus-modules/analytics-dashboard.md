@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-**✅ Required before starting:**
+** Required before starting:**
 
 - Core CRM complete with CRUD operations
 - AI features implemented (summaries, scoring, recommendations)
@@ -800,14 +800,14 @@ async getActivityTrends(days: number, limit: number = 100) {
 
 **After completing this module:**
 
-- ✅ Complete analytics dashboard with 4+ charts
-- ✅ KPI cards showing key metrics
-- ✅ Lead pipeline visualization (funnel/bar chart)
-- ✅ Activity trends over time (line chart)
-- ✅ AI score distribution (bar chart)
-- ✅ Budget analysis (pie chart)
-- ✅ All validation gates passing
-- ✅ Tested in browser
+-  Complete analytics dashboard with 4+ charts
+-  KPI cards showing key metrics
+-  Lead pipeline visualization (funnel/bar chart)
+-  Activity trends over time (line chart)
+-  AI score distribution (bar chart)
+-  Budget analysis (pie chart)
+-  All validation gates passing
+-  Tested in browser
 
 **Skills learned:**
 
@@ -857,6 +857,6 @@ async getActivityTrends(days: number, limit: number = 100) {
 
 ---
 
-**✅ Bonus Module: Analytics Dashboard**
+** Bonus Module: Analytics Dashboard**
 
 **Back to:** [Bonus Modules Overview](README.md)

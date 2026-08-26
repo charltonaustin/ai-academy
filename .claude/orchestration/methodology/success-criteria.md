@@ -10,7 +10,7 @@
 
 ## The Problem with Generic Success Criteria
 
-### ❌ GENERIC (Don't Use)
+###  GENERIC (Don't Use)
 
 **Frontend:**
 
@@ -44,7 +44,7 @@
 
 ## The Solution: Specific Verification Steps
 
-### ✅ SPECIFIC (Always Use)
+###  SPECIFIC (Always Use)
 
 **Frontend Examples:**
 
@@ -174,11 +174,11 @@ npm run dev  # Server starts, connects to Docker database on localhost:5432
 
 **Why Docker matters:**
 
-- ✅ Works on ANY engineer's machine (Mac, Linux, Windows)
-- ✅ No conflicts with locally installed databases
-- ✅ Consistent PostgreSQL version across all developers
-- ✅ Clean teardown (docker-compose down removes everything)
-- ✅ No "works on my machine" issues
+-  Works on ANY engineer's machine (Mac, Linux, Windows)
+-  No conflicts with locally installed databases
+-  Consistent PostgreSQL version across all developers
+-  Clean teardown (docker-compose down removes everything)
+-  No "works on my machine" issues
 
 ### Example 1B: Database Setup (Local PostgreSQL - Alternative)
 
@@ -659,13 +659,13 @@ When creating agent prompts, verify success criteria include:
 
 **Example scenario:**
 
-Agent claims: "Feature works" ✅
+Agent claims: "Feature works" 
 
 **Reality:**
 
-- TypeScript compiles ✅
-- Tests pass ✅
-- **Browser:** "Cannot read property 'firstName' of undefined" ❌
+- TypeScript compiles 
+- Tests pass 
+- **Browser:** "Cannot read property 'firstName' of undefined" 
 - **Root cause:** the API response returns `first_name` but UI expects `firstName`
 
 **With specific success criteria:**
@@ -676,13 +676,13 @@ Agent claims: "Feature works" ✅
 
 ### Example 2: Infrastructure Setup Failure (Port Conflict)
 
-Agent claims: "Database configured" ✅
+Agent claims: "Database configured" 
 
 **Reality:**
 
-- docker-compose.yml exists ✅
-- Docker starts successfully on agent's machine ✅
-- **Engineer B's machine:** docker-compose up -d → "ERROR: port 5432 is already allocated" ❌
+- docker-compose.yml exists 
+- Docker starts successfully on agent's machine 
+- **Engineer B's machine:** docker-compose up -d → "ERROR: port 5432 is already allocated" 
 - **Root cause:** Engineer B has local PostgreSQL on port 5432, Docker can't bind to same port
 
 **With specific success criteria:**
@@ -694,13 +694,13 @@ local PostgreSQL running on 5432, npm run dev connects to Docker database on loc
 
 ### Example 2B: Infrastructure Setup Failure (Missing User)
 
-Agent claims: "Database configured" ✅
+Agent claims: "Database configured" 
 
 **Reality:**
 
-- Database created ✅
-- Migrations exist ✅
-- **Fresh clone:** npm run setup → "ERROR: role 'new_crm_user' does not exist" ❌
+- Database created 
+- Migrations exist 
+- **Fresh clone:** npm run setup → "ERROR: role 'new_crm_user' does not exist" 
 - **Root cause:** Setup script doesn't create database user, only works on original machine
 
 **With specific success criteria:**
@@ -712,13 +712,13 @@ database, applies migrations, seeds test data"
 
 ### Example 3: Backend API Failure
 
-Agent claims: "Login API works" ✅
+Agent claims: "Login API works" 
 
 **Reality:**
 
-- TypeScript compiles ✅
-- Tests pass (with mocked auth service) ✅
-- **curl test:** curl POST /api/auth/login → "Internal Server Error" ❌
+- TypeScript compiles 
+- Tests pass (with mocked auth service) 
+- **curl test:** curl POST /api/auth/login → "Internal Server Error" 
 - **Root cause:** JWT_SECRET not in .env, throws error at runtime
 
 **With specific success criteria:**

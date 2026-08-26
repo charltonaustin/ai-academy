@@ -404,8 +404,8 @@ NOT: Widget agents create files, separate agent integrates all.
 
 **Deliverables Must Include Integration:**
 
-- ❌ WRONG: "Create ConversionWidget component"
-- ✅ RIGHT: "Create ConversionWidget + import into Dashboard + verify renders on /dashboard"
+-  WRONG: "Create ConversionWidget component"
+-  RIGHT: "Create ConversionWidget + import into Dashboard + verify renders on /dashboard"
 
 ### Step 3: Template Selection (30 seconds)
 
@@ -432,19 +432,19 @@ NOT: Widget agents create files, separate agent integrates all.
 
 **ALWAYS INCLUDE (No Exceptions):**
 
-- ✅ Session logging requirement
-- ✅ **5 validation gates (MANDATORY):** TypeScript (0 errors), ESLint (0 warnings), Tests (all passing), Process
+-  Session logging requirement
+-  **5 validation gates (MANDATORY):** TypeScript (0 errors), ESLint (0 warnings), Tests (all passing), Process
   cleanup (no hanging servers), Manual testing (browser OR curl)
     - Full gate specifications: @.claude/orchestration/methodology/validation-gates.md
-- ✅ **Environment variable validation:** Auto-update .env.example if introducing new variables, alert engineer
+-  **Environment variable validation:** Auto-update .env.example if introducing new variables, alert engineer
     - Full protocol: @.claude/orchestration/methodology/environment-validation.md
-- ✅ Testing requirements (unit WITH mocks + integration WITHOUT mocks)
-- ✅ Dependency validation (if has imports)
-- ✅ Coordination protocols (if high coordination)
-- ✅ Quality standards (A+ code)
-- ✅ **Specific success criteria** (not "feature works" - see
+-  Testing requirements (unit WITH mocks + integration WITHOUT mocks)
+-  Dependency validation (if has imports)
+-  Coordination protocols (if high coordination)
+-  Quality standards (A+ code)
+-  **Specific success criteria** (not "feature works" - see
   @.claude/orchestration/methodology/success-criteria.md)
-- ✅ Manual testing (frontend: Playwright browser verification; backend: curl/API testing)
+-  Manual testing (frontend: Playwright browser verification; backend: curl/API testing)
 
 ### Step 4.5: Proven Pattern Application Checkpoint (2-3 minutes)
 
@@ -474,8 +474,8 @@ NOT: Widget agents create files, separate agent integrates all.
 
 **Transform generic → specific success criteria:**
 
-**❌ GENERIC:** "Feature works", "Widget created", "Login works"
-**✅ SPECIFIC:** "Opening /dashboard displays ConversionWidget with live data", "curl POST to /auth/login
+** GENERIC:** "Feature works", "Widget created", "Login works"
+** SPECIFIC:** "Opening /dashboard displays ConversionWidget with live data", "curl POST to /auth/login
 returns 200 with a valid JWT token"
 
 **Key principle:** NOT "feature works" - but "user sees X when they do Y" AND "API returns X when called with Y"
@@ -507,8 +507,8 @@ returns 200 with a valid JWT token"
 
 **If ANY validation fails:**
 
-- ❌ Prompt is INCOMPLETE (go back and fix)
-- ❌ Don't deliver until ALL validations pass
+-  Prompt is INCOMPLETE (go back and fix)
+-  Don't deliver until ALL validations pass
 
 ### Step 7: Explanation (1-2 minutes)
 
@@ -571,8 +571,8 @@ EACH agent owns complete integration (not just file creation).
 
 **Specific Success Criteria (Step 5):**
 
-- NOT: "Widgets created" ❌
-- YES: "Opening /dashboard displays all 3 widgets in grid layout" ✅
+- NOT: "Widgets created" 
+- YES: "Opening /dashboard displays all 3 widgets in grid layout" 
 
 **Feature-Specific Gotchas (Step 6):**
 
@@ -582,11 +582,11 @@ EACH agent owns complete integration (not just file creation).
 - Test: /dashboard page shows your specific widget
 
 **Prompts ready - I validated against:**
-✅ Infrastructure-First (Dashboard exists before widgets)
-✅ Functional Completeness (creation + integration + verification)
-✅ Integration explicit (not assumed)
-✅ Specific success criteria (/dashboard shows widgets)
-✅ Conversation-first (asked questions before template)
+ Infrastructure-First (Dashboard exists before widgets)
+ Functional Completeness (creation + integration + verification)
+ Integration explicit (not assumed)
+ Specific success criteria (/dashboard shows widgets)
+ Conversation-first (asked questions before template)
 
 ---
 

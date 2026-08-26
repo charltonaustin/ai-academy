@@ -228,8 +228,8 @@ For multi-component features, explicit integration responsibility:
 
 **Example:**
 
-- ❌ GENERIC: "Authentication feature works"
-- ✅ SPECIFIC: "Opening /login, entering valid credentials, clicking submit redirects to /dashboard with user name
+-  GENERIC: "Authentication feature works"
+-  SPECIFIC: "Opening /login, entering valid credentials, clicking submit redirects to /dashboard with user name
   displayed in header"
 
 ---

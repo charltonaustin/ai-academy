@@ -24,10 +24,10 @@ validation requirements).
 
 ## Current State (BEFORE FIX)
 
-**TypeScript:** {✅/❌} {X errors}
-**ESLint:** {✅/❌} {X warnings}
-**Tests:** {✅/❌} {X failing / Y passing}
-**Resource Cleanup:** {✅/❌} {status}
+**TypeScript:** {/} {X errors}
+**ESLint:** {/} {X warnings}
+**Tests:** {/} {X failing / Y passing}
+**Resource Cleanup:** {/} {status}
 
 **Your job:** Fix {specific bugs} AND maintain or improve all validation metrics.
 
@@ -181,9 +181,9 @@ npm test
 
 \`\`\`bash
 # Check for any lingering node processes if dev server was killed improperly
-lsof -i :3000 | grep LISTEN || echo "Port 3000 available ✅"
+lsof -i :3000 | grep LISTEN || echo "Port 3000 available "
 \`\`\`
-**REQUIRED:** "Port 3000 available ✅"
+**REQUIRED:** "Port 3000 available "
 
 **If port is still in use:**
 \`\`\`bash
@@ -192,7 +192,7 @@ lsof -t -i:3000 | xargs kill -9
 echo "Cleaned up lingering dev server process"
 
 # Re-run check to verify cleanup
-lsof -i :3000 | grep LISTEN || echo "Cleanup successful ✅"
+lsof -i :3000 | grep LISTEN || echo "Cleanup successful "
 \`\`\`
 
 ---
@@ -223,14 +223,14 @@ lsof -i :3000 | grep LISTEN || echo "Cleanup successful ✅"
 ✔ Tests: {Y+X}/{Y+X} passing ← ALL must pass
 
 [Paste lsof -i :3000 output]
-Port 3000 available ✅
+Port 3000 available 
 
 ### Comparison
 
-- TypeScript: {X} → 0 ✅
-- ESLint: {X} → 0 ✅
-- Tests: {X failing} → 0 failing ✅
-- Resources: Clean ✅
+- TypeScript: {X} → 0 
+- ESLint: {X} → 0 
+- Tests: {X failing} → 0 failing 
+- Resources: Clean 
 
 **ALL VALIDATIONS PASSED**
 \`\`\`
@@ -243,32 +243,32 @@ Port 3000 available ✅
 
 ### If TypeScript Errors Remain or Increase:
 
-- ❌ Your fix introduced new type issues
-- ❌ REVERT your changes
-- ✅ Try different approach (e.g., type guards vs type assertions)
-- ✅ Re-validate until 0 errors
+-  Your fix introduced new type issues
+-  REVERT your changes
+-  Try different approach (e.g., type guards vs type assertions)
+-  Re-validate until 0 errors
 
 ### If ESLint Warnings Appear:
 
-- ❌ Your fix violated code quality standards
-- ❌ REVERT or fix ESLint issues
-- ✅ Re-validate until 0 warnings
+-  Your fix violated code quality standards
+-  REVERT or fix ESLint issues
+-  Re-validate until 0 warnings
 
 ### If Tests Still Fail or New Failures:
 
-- ❌ Your fix didn't work OR broke other code
-- ❌ REVERT if more failures than before
-- ✅ Investigate root cause more deeply
-- ✅ Try different fix approach
-- ✅ Re-validate until all passing
+-  Your fix didn't work OR broke other code
+-  REVERT if more failures than before
+-  Investigate root cause more deeply
+-  Try different fix approach
+-  Re-validate until all passing
 
 ### If You Introduce New Bugs:
 
-- ❌ STOP and REVERT changes immediately
-- ❌ Analyze what went wrong
-- ✅ Document issue in session log
-- ✅ Try different approach
-- ✅ Validate again from clean state
+-  STOP and REVERT changes immediately
+-  Analyze what went wrong
+-  Document issue in session log
+-  Try different approach
+-  Validate again from clean state
 
 **You are NOT COMPLETE until:**
 
@@ -306,7 +306,7 @@ Tests {M} passed ({M})
 **Resources:**
 \`\`\`bash
 $ lsof -i :3000 | grep LISTEN
-Port 3000 available ✅
+Port 3000 available 
 \`\`\`
 
 **Session Log:**
@@ -397,20 +397,20 @@ Port 3000 available ✅
 
 ### What Makes a Good Bug Fix Prompt:
 
-**✅ Clear bug descriptions** with file/line references
-**✅ Root cause analysis** (why bug exists)
-**✅ Specific fix instructions** (what code to change)
-**✅ Complete validation requirements** (TypeScript, ESLint, tests, processes)
-**✅ Before/after metrics** (so agent knows success criteria)
-**✅ "Do not introduce new bugs" warning** (explicit constraint)
+** Clear bug descriptions** with file/line references
+** Root cause analysis** (why bug exists)
+** Specific fix instructions** (what code to change)
+** Complete validation requirements** (TypeScript, ESLint, tests, processes)
+** Before/after metrics** (so agent knows success criteria)
+** "Do not introduce new bugs" warning** (explicit constraint)
 
 ### What Makes a Bad Bug Fix Prompt:
 
-**❌ Vague instructions** ("fix the auth tests")
-**❌ No validation requirements** (agent decides when "done")
-**❌ No baseline metrics** (agent doesn't know if they made things worse)
-**❌ Only validates specific bug** (doesn't check for new bugs introduced)
-**❌ No session log requirements** (no audit trail)
+** Vague instructions** ("fix the auth tests")
+** No validation requirements** (agent decides when "done")
+** No baseline metrics** (agent doesn't know if they made things worse)
+** Only validates specific bug** (doesn't check for new bugs introduced)
+** No session log requirements** (no audit trail)
 
 ---
 

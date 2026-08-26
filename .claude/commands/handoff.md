@@ -11,11 +11,11 @@ When executed, this slash command expands to:
 
 ````text
 CRITICAL CONSTRAINT: This command creates ONLY a session handoff document. You MUST NOT:
-- ❌ Implement any code fixes
-- ❌ Modify any application code
-- ❌ Run any code implementations
-- ❌ Apply any bug fixes
-- ❌ Edit any files outside .claude/orchestration/meta/session-handoffs/
+-  Implement any code fixes
+-  Modify any application code
+-  Run any code implementations
+-  Apply any bug fixes
+-  Edit any files outside .claude/orchestration/meta/session-handoffs/
 
 Your ONLY task is to create a comprehensive session handoff markdown file documenting current state.
 
@@ -250,7 +250,7 @@ HANDOFF FILE CREATION STEPS (DOCUMENTATION ONLY):
 
 5. **Report for Code Review:**
    ```markdown
-   ✅ Session handoff file created: `.claude/orchestration/meta/session-handoffs/{filename}.md`
+    Session handoff file created: `.claude/orchestration/meta/session-handoffs/{filename}.md`
 
    **Current Status:** {brief summary}
    **Next Steps:** {top 3 priorities for NEXT SESSION to implement}

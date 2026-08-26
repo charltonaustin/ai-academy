@@ -125,7 +125,7 @@ async function initConfig(repoRoot) {
   }
 
   fs.writeFileSync(configPath, JSON.stringify(DEFAULT_CONFIG, null, 2) + '\n');
-  console.log(`✅ Configuration file created at: ${configPath}`);
+  console.log(` Configuration file created at: ${configPath}`);
   console.log('');
   console.log('You can now customize the following:');
   console.log('  - Branch naming convention');
@@ -456,11 +456,11 @@ async function main() {
   }
 
   if (!created) {
-    console.error('❌ Failed to create worktree');
+    console.error(' Failed to create worktree');
     return 1;
   }
 
-  console.log('✅ Worktree created successfully!');
+  console.log(' Worktree created successfully!');
 
   findAndCopyConfigFiles(mainWorktree, newWorktreePath, config);
 

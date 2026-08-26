@@ -4,16 +4,16 @@
 
 **When to use these:**
 
-- ✅ You've completed all required features (Days 1-4)
-- ✅ You want additional challenges
-- ✅ You're interested in specific advanced topics
-- ✅ You have extra time available
+-  You've completed all required features (Days 1-4)
+-  You want additional challenges
+-  You're interested in specific advanced topics
+-  You have extra time available
 
 **When NOT to use these:**
 
-- ❌ You're still working on required features
-- ❌ You're feeling overwhelmed
-- ❌ You want to focus on polish and demos
+-  You're still working on required features
+-  You're feeling overwhelmed
+-  You want to focus on polish and demos
 
 **Choose based on interest, not obligation.**
 
@@ -25,9 +25,9 @@
 
 **Prerequisites:**
 
-- ✅ All Day 1-4 required features complete
-- ✅ Comfortable with complex agent orchestration
-- ✅ Want unlimited stretch work
+-  All Day 1-4 required features complete
+-  Comfortable with complex agent orchestration
+-  Want unlimited stretch work
 
 **What you'll build:**
 
@@ -51,8 +51,8 @@
 
 **Prerequisites:**
 
-- ✅ JWT authentication complete (Day 3)
-- ✅ Comfortable with external service integration
+-  JWT authentication complete (Day 3)
+-  Comfortable with external service integration
 
 **What you'll build:**
 
@@ -76,8 +76,8 @@
 
 **Prerequisites:**
 
-- ✅ Mobile app foundation complete (Day 4)
-- ✅ Comfortable with Angular + service worker patterns
+-  Mobile app foundation complete (Day 4)
+-  Comfortable with Angular + service worker patterns
 
 **What you'll build:**
 
@@ -101,8 +101,8 @@
 
 **Prerequisites:**
 
-- ✅ Core CRM complete with AI features
-- ✅ Comfortable with data visualization
+-  Core CRM complete with AI features
+-  Comfortable with data visualization
 
 **What you'll build:**
 

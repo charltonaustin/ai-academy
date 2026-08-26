@@ -93,14 +93,14 @@ Focused specific task → Claude reads 5 files → 3K tokens → fast, effective
 
 **Vague → Specific transformation:**
 
-**❌ Vague:**
+** Vague:**
 
 - "Fix the bugs"
 - "Make it work"
 - "Improve performance"
 - "Add authentication"
 
-**✅ Specific:**
+** Specific:**
 
 - "Fix TypeError on line 45 of user.service.ts where firstName is undefined"
 - "Add email validation to registration form (check @ symbol, reject if missing)"
@@ -280,7 +280,7 @@ Agent: Implements using summary (context stayed lean)
 
 ### Example 1: Bug Fix
 
-**❌ High context:**
+** High context:**
 
 ```
 "The dashboard is broken, fix it"
@@ -293,7 +293,7 @@ Claude must:
 - Debug issues
 - 20+ files, 15K tokens
 
-**✅ Low context:**
+** Low context:**
 
 ```
 "In src/app/dashboard/dashboard.component.ts line 42, firstName is undefined
@@ -311,7 +311,7 @@ Claude:
 
 ### Example 2: New Feature
 
-**❌ High context:**
+** High context:**
 
 ```
 "Add analytics to the app"
@@ -324,7 +324,7 @@ Claude must:
 - Research analytics libraries
 - Massive exploration
 
-**✅ Low context:**
+** Low context:**
 
 ```
 "Add ConversionWidget component to src/app/components/widgets/ that:
@@ -345,13 +345,13 @@ Claude:
 
 ### Example 3: Infrastructure Setup
 
-**❌ High context:**
+** High context:**
 
 ```
 "Set up the project"
 ```
 
-**✅ Low context:**
+** Low context:**
 
 ```
 "Create docker-compose.yml with PostgreSQL 18 on port 5433.

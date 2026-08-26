@@ -64,7 +64,7 @@ npm test
 
 ```bash
 # Check for any hanging test processes
-pgrep -f jest || echo "No hanging processes ✅"
+pgrep -f jest || echo "No hanging processes "
 ```
 
 **Required:** Clean development environment, no resource leaks
