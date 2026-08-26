@@ -72,6 +72,32 @@
 
 ---
 
+### 🧪 Digital Twin Testing (SMS Alerts via Twilio)
+
+**Prerequisites:**
+
+-  Backend REST API complete (Day 2)
+-  Comfortable with Two-Tier Testing (Chapter 02)
+-  Free Twilio trial account (no cost)
+
+**What you'll build:**
+
+- SMS lead alerts via Twilio when a high-priority task is created
+- A local "digital twin" of the Twilio API — validated against the real service, not just a guessed mock
+- Integration tests that run against the twin instead of the live API
+
+**What you'll learn:**
+
+- Boundary-level test doubles (mocking at the HTTP contract, not the SDK)
+- Validating a mock against the real dependency until behavior matches
+- Why this prevents the "mock blindness" problem from Chapter 02
+- The Digital Twin Universe pattern (inspired by
+  [StrongDM AI's software factories](https://factory.strongdm.ai/techniques/dtu)), at course scale
+
+**📖 Complete guide:** [Digital Twin Testing](digital-twin-testing.md)
+
+---
+
 ### 📱 Advanced Mobile Features
 
 **Prerequisites:**
