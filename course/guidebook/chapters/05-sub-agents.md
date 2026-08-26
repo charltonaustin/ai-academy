@@ -156,28 +156,21 @@ Claude:
 - You want focused exploration separate from implementation
 - You're managing context strategically
 
-### Method 3: Check Running Sub-Agents
+### Method 3: Watching Sub-Agents Work
 
-**Use `/agents` command:**
+**`/agents` is not a live progress monitor.** It's the interface for creating, editing, and listing your custom
+sub-agent *definitions* (the specialized agents covered in section 6) — it doesn't show currently-running Task-tool
+invocations.
 
-```bash
-/agents
-```
+To see sub-agent activity while it happens, watch the transcript itself: each Task-tool sub-agent call appears
+inline as its own collapsible tool-call block, showing what it was asked to do and its result once it finishes. That's
+how you monitor progress and understand what's taking time — there's no separate command needed.
 
-**Shows:**
+**Use `/agents` for:**
 
-```
-Running agents:
-- Main session (this conversation)
-- Sub-agent 1: "Exploring authentication patterns" (in progress)
-- Sub-agent 2: "Research completed" (finished)
-```
-
-**You can:**
-
-- See what sub-agents are running
-- Monitor progress
-- Understand what's taking time
+- Creating a new custom sub-agent definition
+- Listing the sub-agents currently defined for this project
+- Editing an existing sub-agent's description, tools, or system prompt
 
 ---
 
@@ -371,49 +364,37 @@ can create your own specialized sub-agents for domain-specific needs.
 
 ### How to Create Custom Sub-Agent Definitions
 
-Custom sub-agents are defined using Claude Code's agent definition file format. These are stored in `.claude/agents/`
-directory (or similar project-specific location).
+Custom sub-agents are Markdown files with YAML **frontmatter**, stored in `.claude/agents/<name>.md`. The frontmatter
+holds `name`, `description`, and (optionally) `tools` and `model`; everything after it is the agent's system prompt,
+written as plain Markdown — not additional YAML keys.
 
 **Agent definition structure:**
 
-```yaml
-# .claude/agents/payment-integration-specialist.yaml
+```markdown
+---
 name: payment-integration-specialist
-description: |
-  Specialized agent for integrating payment processors (Stripe, PayPal, etc.)
-  with proper error handling, webhook validation, and PCI compliance patterns.
+description: >
+  Specialized agent for integrating payment processors (Stripe, PayPal, etc.) with proper error handling,
+  webhook validation, and PCI compliance patterns. Use this agent when implementing payment features that
+  require secure API key management, webhook signature verification, idempotent payment processing, or
+  refund/dispute handling workflows.
+tools: Write, Read, Edit, Bash, Grep, Glob
+---
 
-  Use this agent when implementing payment features that require:
-  - Secure API key management
-  - Webhook signature verification
-  - Idempotent payment processing
-  - Refund/dispute handling workflows
+Always use environment variables for API keys (never hardcode). Implement webhook signature verification for
+all webhook endpoints. Use idempotency keys for payment operations. Log all payment events for audit trails.
+Handle network failures with exponential backoff retry.
 
-tools:
-  - Write
-  - Read
-  - Edit
-  - Bash
-  - Grep
-  - Glob
+Example: Stripe integration with webhook validation
 
-context:
-  - Always use environment variables for API keys (never hardcode)
-  - Implement webhook signature verification for all webhook endpoints
-  - Use idempotency keys for payment operations
-  - Log all payment events for audit trails
-  - Handle network failures with exponential backoff retry
-
-examples:
-  - |
-    Example: Stripe integration with webhook validation
-
-    1. Store STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET in .env
-    2. Create webhook endpoint with signature verification
-    3. Implement idempotent payment processing
-    4. Add comprehensive error handling
-    5. Log all events to audit table
+1. Store STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET in .env
+2. Create webhook endpoint with signature verification
+3. Implement idempotent payment processing
+4. Add comprehensive error handling
+5. Log all events to audit table
 ```
+
+**File location:** `.claude/agents/payment-integration-specialist.md`
 
 ### Example: Creating a Library Cataloging Agent
 
@@ -421,66 +402,60 @@ examples:
 
 **Custom agent definition:**
 
-```yaml
-# .claude/agents/library-cataloging-specialist.yaml
+```markdown
+---
 name: library-cataloging-specialist
-description: |
-  Expert in library cataloging standards (MARC21, Dublin Core).
+description: >
+  Expert in library cataloging standards (MARC21, Dublin Core). Use when implementing features that involve
+  book metadata management, cataloging workflows, metadata format conversions, or import/export of library
+  records.
+tools: Write, Read, Edit, Bash, WebFetch
+---
 
-  Use when implementing features that involve:
-  - Book metadata management
-  - Cataloging workflows
-  - Metadata format conversions
-  - Import/export of library records
+Expertise: MARC21 field structure and indicators, Dublin Core elements (dc:title, dc:creator, etc.), ISBN/ISSN
+validation, call number systems (Dewey, LC Classification), authority control patterns. Use WebFetch for pulling
+current Library of Congress standards when needed.
 
-tools:
-  - Write
-  - Read
-  - Edit
-  - Bash
-  - WebFetch  # For fetching Library of Congress standards
+Validation checklist before considering work complete:
 
-expertise:
-  - MARC21 field structure and indicators
-  - Dublin Core elements (dc:title, dc:creator, etc.)
-  - ISBN/ISSN validation
-  - Call number systems (Dewey, LC Classification)
-  - Authority control patterns
-
-validation:
-  - Verify MARC21 records have valid tags (010-999)
-  - Ensure required Dublin Core elements present
-  - Validate ISBN format (10 or 13 digits with check digit)
-  - Check call numbers match chosen system format
+- Verify MARC21 records have valid tags (010-999)
+- Ensure required Dublin Core elements are present
+- Validate ISBN format (10 or 13 digits with check digit)
+- Check call numbers match the chosen system format
 ```
 
-### Using the Agent-Creator Agent
+**File location:** `.claude/agents/library-cataloging-specialist.md`
 
-Claude Code provides an `agent-creator` agent to help design new specialized agents.
+### Using `/agents` to Design New Agents
+
+There's no `agent-creator` sub-agent type you invoke via the Task tool. Instead, use the `/agents` slash command
+directly — it's an interactive flow for creating new sub-agent definitions.
 
 **How to use it:**
 
 ```
-You: "I need an agent that understands library cataloging standards
+/agents
+
+[Choose "Create new agent"]
+
+You describe: "I need an agent that understands library cataloging standards
 like MARC21 and Dublin Core for proper metadata management."
 
-[Use Task tool with subagent_type=agent-creator]
-
-Agent-Creator:
-1. Analyzes your domain-specific needs
-2. Identifies required tools and capabilities
-3. Generates agent definition file
-4. Explains when to use this agent vs built-in types
-5. Provides example invocations
+Claude Code:
+1. Asks clarifying questions about your domain-specific needs
+2. Helps identify required tools and capabilities
+3. Writes the agent definition file to .claude/agents/
+4. Lets you review and edit the generated description/system prompt
 ```
 
-**The agent-creator will produce:**
+**The result:**
 
-- Complete agent definition file (YAML format)
-- Documentation of agent's purpose and capabilities
-- Usage examples for your specific domain
-- Tool access recommendations
-- Validation checklist for the agent type
+- A complete `.claude/agents/<name>.md` file (frontmatter + system prompt)
+- A description Claude Code uses to decide when to route work to this agent automatically
+- Tool access scoped to what the agent actually needs
+
+You can still write the file by hand instead — `/agents` just automates the same Markdown-plus-frontmatter format
+shown above.
 
 ### Example: Brownfield Company Codebase Agent
 
@@ -488,40 +463,31 @@ Agent-Creator:
 
 **You create:**
 
-```yaml
-# .claude/agents/acme-backend-specialist.yaml
+```markdown
+---
 name: acme-backend-specialist
-description: |
-  Specialized for ACME Corp's backend architecture patterns.
+description: >
+  Specialized for ACME Corp's backend architecture patterns. Understands our custom ORM wrapper patterns,
+  internal API versioning conventions, company-specific error handling, and legacy database schema quirks.
+tools: Write, Read, Edit, MultiEdit, Bash, Grep, Glob
+---
 
-  Understands:
-  - Our custom ORM wrapper patterns
-  - Internal API versioning conventions
-  - Company-specific error handling
-  - Legacy database schema quirks
+Conventions to follow:
 
-tools:
-  - Write
-  - Read
-  - Edit
-  - MultiEdit
-  - Bash
-  - Grep
-  - Glob
+- All database queries use AcmeQueryBuilder (not raw SQL)
+- API routes prefixed with /api/v{version}/
+- Errors use the AcmeError class with standard codes
+- Legacy tables use snake_case, new tables use camelCase
+- All services extend BaseAcmeService
 
-conventions:
-  - All database queries use AcmeQueryBuilder (not raw SQL)
-  - API routes prefixed with /api/v{version}/
-  - Errors use AcmeError class with standard codes
-  - Legacy tables use snake_case, new tables use camelCase
-  - All services extend BaseAcmeService
+Before implementing anything, read these files first:
 
-patterns:
-  read_first:
-    - src/core/query-builder.ts (ORM wrapper)
-    - src/core/base-service.ts (Service patterns)
-    - src/core/error-handler.ts (Error patterns)
+- src/core/query-builder.ts (ORM wrapper)
+- src/core/base-service.ts (service patterns)
+- src/core/error-handler.ts (error patterns)
 ```
+
+**File location:** `.claude/agents/acme-backend-specialist.md`
 
 **Usage in your prompts:**
 
@@ -598,7 +564,7 @@ You: "Implement PayPal payment with [same long instructions]"
 ```
 You: "Create payment-integration-specialist agent"
 
-[Use agent-creator to codify patterns]
+[Use /agents to codify patterns]
 
 Now all future payment features:
 "Use payment-integration-specialist to add [payment processor]"
@@ -620,37 +586,37 @@ description: |
   - Frontend work (use frontend-developer)
 ```
 
-**2. Include discovery patterns:**
+**2. Include discovery patterns (in the system prompt body, not frontmatter):**
 
-```yaml
-context:
-  - Always check existing code patterns before implementing
-  - Read src/core/payment-base.ts for standard approaches
-  - Search for similar integrations: grep -r "PaymentProcessor"
+```markdown
+Always check existing code patterns before implementing. Read src/core/payment-base.ts for standard
+approaches. Search for similar integrations: grep -r "PaymentProcessor"
 ```
 
-**3. Specify validation requirements:**
+**3. Specify validation requirements (also in the body):**
 
-```yaml
-validation:
-  - Run: npm test:payments (payment-specific test suite)
-  - Verify: Webhook signatures validate correctly
-  - Check: Idempotency keys prevent duplicate charges
-  - Test: Refund workflow with test cards
+```markdown
+Before considering work complete:
+- Run: npm test:payments (payment-specific test suite)
+- Verify: Webhook signatures validate correctly
+- Check: Idempotency keys prevent duplicate charges
+- Test: Refund workflow with test cards
 ```
 
-**4. Provide examples:**
+**4. Provide examples (also in the body):**
 
-```yaml
-examples:
-  - |
-    Example 1: Adding new payment processor
-    1. Extend PaymentProcessorBase class
-    2. Implement charge(), refund(), webhook() methods
-    3. Add processor config to .env.example
-    4. Create integration tests with test API keys
-    5. Document in docs/payments/[processor].md
+```markdown
+Example: Adding a new payment processor
+1. Extend PaymentProcessorBase class
+2. Implement charge(), refund(), webhook() methods
+3. Add processor config to .env.example
+4. Create integration tests with test API keys
+5. Document in docs/payments/[processor].md
 ```
+
+Only `name`, `description`, `tools`, and `model` are real frontmatter fields — everything else (discovery
+patterns, validation steps, examples) belongs in the plain-Markdown system prompt below the frontmatter, not as
+additional YAML keys.
 
 ---
 
@@ -660,8 +626,10 @@ examples:
 - [ ] Agent uses Task tool to spawn sub-agents for exploration/research
 - [ ] Trade-off: Slower execution, higher quality (especially large codebases)
 - [ ] You can explicitly request, or let Claude decide autonomously
-- [ ] Use `/agents` command to see running sub-agents
+- [ ] Use `/agents` to create, edit, and list custom sub-agent definitions (not to monitor running sub-agents —
+  watch the transcript for that)
 - [ ] Sub-agents are ONE technique for context management (not the only one)
 - [ ] Create custom sub-agents for repeated domain-specific patterns (3+ uses)
-- [ ] Use agent-creator to help design specialized agent definitions
+- [ ] Custom sub-agents are Markdown files with YAML frontmatter (`name`, `description`, `tools`, `model`) in
+  `.claude/agents/`, not freeform YAML
 - [ ] Custom agents capture knowledge and ensure consistent quality across team

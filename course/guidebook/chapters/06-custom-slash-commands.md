@@ -138,7 +138,8 @@ argument-hint: '[optional-arg] (required-arg)'
 
 Your prompt content here.
 
-You can reference the argument in your prompt using {arg-name}.
+Reference arguments using `$ARGUMENTS` (everything typed after the command, as one string) or positional
+`$1`, `$2`, etc. (space-separated, like shell script arguments).
 ```
 
 **Benefits:**
@@ -181,7 +182,7 @@ description: Analyze codebase for patterns related to a feature
 argument-hint: '[feature-name]'
 ---
 
-Use Serena MCP to analyze patterns for: {feature-name}
+Use Serena MCP to analyze patterns for: $1
 
 Find:
 
@@ -310,7 +311,7 @@ description: Generate prompt for new API endpoint following repo patterns
 argument-hint: '[endpoint-name]'
 ---
 
-Create an agent prompt for new API endpoint: {endpoint-name}
+Create an agent prompt for new API endpoint: $1
 
 Follow established patterns:
 
@@ -324,7 +325,7 @@ Follow established patterns:
 
 Include all validation gates and session logging.
 
-Save prompt to: `.claude/workspace/{endpoint-name}/agent-prompts/api-endpoint.md`
+Save prompt to: `.claude/workspace/$1/agent-prompts/api-endpoint.md`
 ```
 
 **Usage:** `/new-api-endpoint user-preferences`
@@ -339,7 +340,7 @@ description: Systematic debugging of integration issues
 argument-hint: '[integration-name]'
 ---
 
-Debug integration issue: {integration-name}
+Debug integration issue: $1
 
 Use Sequential Thinking MCP to trace through:
 
@@ -408,8 +409,8 @@ Audit code quality of recent work:
 
 **Arguments:**
 
-- Simple arguments work: `{arg-name}`
-- Complex parsing may not work as expected
+- Use `$ARGUMENTS` for the whole raw argument string, or `$1`, `$2`, etc. for space-separated positional args
+- `{arg-name}`-style named placeholders are NOT real Claude Code syntax — they won't substitute
 - Test your commands with arguments
 
 **Scope:**

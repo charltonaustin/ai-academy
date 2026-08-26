@@ -77,12 +77,8 @@ because the terminology can be confusing!
       "command": "npx",
       "args": [
         "-y",
-        "@upstash/context7"
-      ],
-      "env": {
-        "UPSTASH_REDIS_REST_URL": "your-redis-url",
-        "UPSTASH_REDIS_REST_TOKEN": "your-redis-token"
-      }
+        "@upstash/context7-mcp"
+      ]
     }
   }
 }
@@ -219,7 +215,7 @@ claude mcp add --scope user <name> -- npx -y <package-name> [args]
 ```bash
 # Install for all projects (user scope)
 claude mcp add --scope user filesystem -- npx -y @modelcontextprotocol/server-filesystem /Users/yourname/projects
-claude mcp add --scope user context7 -- npx -y @upstash/context7
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
 ```
 
 **What happens:**
@@ -356,7 +352,7 @@ claude # then type: /mcp
 **Installation:**
 
 ```bash
-claude mcp add @modelcontextprotocol/server-filesystem
+claude mcp add --scope user filesystem -- npx -y @modelcontextprotocol/server-filesystem /Users/yourname/projects
 ```
 
 **Manual config:**
@@ -392,7 +388,7 @@ Expected: Enhanced file listing with metadata
 **Installation:**
 
 ```bash
-claude mcp add @microsoft/playwright-mcp
+claude mcp add playwright --scope user -- npx @playwright/mcp@latest
 ```
 
 **Manual config:**
@@ -403,8 +399,7 @@ claude mcp add @microsoft/playwright-mcp
     "playwright": {
       "command": "npx",
       "args": [
-        "-y",
-        "@microsoft/playwright-mcp"
+        "@playwright/mcp@latest"
       ]
     }
   }
@@ -427,7 +422,7 @@ Expected: Browser opens, screenshot saved and displayed
 **Installation:**
 
 ```bash
-claude mcp add @upstash/context7
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
 ```
 
 **Manual config:**
@@ -439,7 +434,7 @@ claude mcp add @upstash/context7
       "command": "npx",
       "args": [
         "-y",
-        "@upstash/context7"
+        "@upstash/context7-mcp"
       ]
     }
   }
@@ -465,7 +460,7 @@ Expected: Current Sequelize documentation (not outdated patterns)
 
 ```bash
 cd ~/your-project
-claude mcp add @oraios/serena --project
+claude mcp add --scope project serena -- npx -y @oraios/serena --cwd .
 ```
 
 **Manual config:**
@@ -616,7 +611,7 @@ claude mcp list
 
 ```bash
 # Install if missing
-claude mcp add @package/name
+claude mcp add <name> -- npx -y <package-name> [args]
 
 # Or verify correct server name
 /mcp
@@ -743,7 +738,7 @@ This project uses Serena MCP for codebase analysis.
 
 ```bash
 # Install project MCP servers
-claude mcp add @oraios/serena --project
+claude mcp add --scope project serena -- npx -y @oraios/serena --cwd .
 ```
 ````
 
