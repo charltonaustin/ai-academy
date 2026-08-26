@@ -213,6 +213,36 @@ async validateGoogleUser(googleUser: {
 }
 ```
 
+Add a short-lived, single-use exchange code so the JWT itself never has to travel through
+the redirect URL (query strings end up in browser history, server access logs, and the
+`Referer` header — never put a real credential there):
+
+```typescript
+import { randomUUID } from "crypto";
+import { UnauthorizedException } from "@nestjs/common";
+
+// In-memory is fine for a single backend instance / this course project.
+// If you deploy multiple instances, back this with Redis instead.
+private googleAuthCodes = new Map<string, { token: string; expiresAt: number }>();
+
+createGoogleAuthCode(token: string): string {
+  const code = randomUUID();
+  this.googleAuthCodes.set(code, { token, expiresAt: Date.now() + 60_000 });
+  return code;
+}
+
+exchangeGoogleAuthCode(code: string): string {
+  const entry = this.googleAuthCodes.get(code);
+  this.googleAuthCodes.delete(code); // single-use, even if invalid/expired
+
+  if (!entry || entry.expiresAt < Date.now()) {
+    throw new UnauthorizedException("Invalid or expired code");
+  }
+
+  return entry.token;
+}
+```
+
 ---
 
 #### Update UsersService (add Google methods):
@@ -268,7 +298,7 @@ async createGoogleUser(googleUser: {
 Add routes:
 
 ```typescript
-import { Controller, Get, Req, Res, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Response } from "express";
 import { AuthService } from "./auth.service";
@@ -292,8 +322,18 @@ export class AuthController {
     // Generate JWT token
     const token = this.authService.generateJwtToken(user);
 
-    // Redirect to frontend with token
-    res.redirect(`http://localhost:3001/auth/callback?token=${token}`);
+    // Don't put the JWT in the redirect URL — issue a short-lived, single-use
+    // code instead. The frontend exchanges it for the real token over POST.
+    const code = this.authService.createGoogleAuthCode(token);
+
+    const frontendUrl = process.env.FRONTEND_URL ?? "http://localhost:3001";
+    res.redirect(`${frontendUrl}/auth/callback?code=${code}`);
+  }
+
+  @Post("google/exchange")
+  async googleAuthExchange(@Body("code") code: string) {
+    const token = this.authService.exchangeGoogleAuthCode(code);
+    return { token };
   }
 }
 ```
@@ -380,6 +420,7 @@ export class LoginComponent {
 ```typescript
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth-callback',
@@ -389,20 +430,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AuthCallbackComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private http = inject(HttpClient);
 
   ngOnInit(): void {
-    const token = this.route.snapshot.queryParamMap.get('token');
+    const code = this.route.snapshot.queryParamMap.get('code');
 
-    if (token) {
-      // Store JWT token
-      localStorage.setItem('authToken', token);
-
-      // Redirect to dashboard
-      this.router.navigate(['/dashboard']);
-    } else {
-      // Error case
+    if (!code) {
       this.router.navigate(['/login'], { queryParams: { error: 'oauth_failed' } });
+      return;
     }
+
+    // Exchange the short-lived, single-use code for the real JWT over POST.
+    // The code is useless after this call (or after 60s), so it being briefly
+    // visible in the URL/history/logs doesn't expose the session token itself.
+    this.http
+      .post<{ token: string }>('http://localhost:3000/api/auth/google/exchange', { code })
+      .subscribe({
+        next: ({ token }) => {
+          localStorage.setItem('authToken', token);
+          this.router.navigate(['/dashboard']);
+        },
+        error: () => {
+          this.router.navigate(['/login'], { queryParams: { error: 'oauth_failed' } });
+        },
+      });
   }
 }
 ```
@@ -675,9 +726,10 @@ GOOGLE_CALLBACK_URL=https://your-domain.com/api/auth/google/callback
 
 **Token not stored in localStorage:**
 
-- Verify callback page (`/auth/callback`) extracts token from URL
-- Check `localStorage.setItem('authToken', token)` executes
-- Test with browser dev tools (Application → Local Storage)
+- Verify callback page (`/auth/callback`) extracts `code` from URL and POSTs it to `/api/auth/google/exchange`
+- Check the exchange request succeeds and `localStorage.setItem('authToken', token)` executes in the `next` handler
+- If the exchange fails with "Invalid or expired code," the code was already used or the 60s window passed — restart the login flow
+- Test with browser dev tools (Application → Local Storage, and Network tab for the `/exchange` call)
 
 **Existing user not linked:**
 

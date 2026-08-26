@@ -86,41 +86,41 @@ This confirms the action worked (or shows errors).
 
 ---
 
-#### Bypass Permissions Mode
+#### Auto Mode
 
-**What it is:** A setting that allows Claude Code to execute file operations and commands without asking for permission
-each time
+**What it is:** A permission mode that lets Claude Code proceed through routine file operations and commands without
+stopping to ask each time, while still evaluating actions for safety — unlike `--dangerously-skip-permissions`, which
+disables permission checks entirely.
 
-**⚠️ Use with caution**
-
-FOR THE RECORD - I have this globally set and I've never had any issues. It makes me SIGNIFICANTLY FASTER.
+**⚠️ Use with caution, and prefer scoping it to a project rather than enabling it globally**
 
 **How to enable:**
 
 **Option 1: Per-session (temporary)**
 
 ```bash
-# Start Claude Code with bypass permissions for this session only
-claude --dangerously-skip-permissions
+# Start Claude Code in auto mode for this session only
+claude --permission-mode auto
 ```
 
-**Option 2: Globally (permanent - for all projects)**
+**Option 2: Per-project (recommended)**
 
-Edit your global settings file at `~/.claude/settings.json`:
+Edit the project's settings file at `.claude/settings.json`:
 
 ```json
 {
   "permissions": {
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "auto"
   }
 }
 ```
 
 **What this does:**
 
-- Applies bypass permissions to ALL Claude Code sessions
-- No need to use `--dangerously-skip-permissions` flag every time
-- Persists across all projects and sessions
+- Reduces prompts for routine actions in this project without turning off permission checks altogether
+- No need to pass `--permission-mode auto` every time you start a session in this project
+- Scoping it per-project (rather than in the global `~/.claude/settings.json`) keeps the trade-off contained to
+  projects where you've decided it's appropriate, instead of applying it to every session everywhere
 
 ---
 
