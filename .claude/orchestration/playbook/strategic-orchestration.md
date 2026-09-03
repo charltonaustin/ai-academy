@@ -1,445 +1,112 @@
-# Pre-Execution Validation Protocol: Strategic Orchestration Checklist
+# Strategic Orchestration: Pre-Execution Checklist
 
-**Purpose:** Mandatory checklist for orchestration partner before launching ANY agent
-**Impact:** Enables efficient delivery with minimal intervention through proactive blocker removal
+**What:** What the orchestration partner does *before* launching an agent
+
+**When:** Every feature agent launch, every continuation of a blocked feature, every new tool
+
+**Think:** Cheat sheet (keep open while working)
+
+**Complete specification:** @.claude/orchestration/methodology/pre-execution-validation-protocol.md
 
 ---
 
-## Why This Protocol Exists
-
-### The Problem Pattern (Reactive)
+## The trade this protocol makes
 
 ```
-Agent executes → discovers blocker → gets stuck → human intervention → resume → discover next blocker → stuck again
+Reactive:  launch → agent hits blocker → stuck → intervention → resume → next blocker
+Proactive: validate → remove blockers → launch → smooth execution
 ```
 
-**Result:** Extended time, frustration, incomplete features
+30-60 minutes of pre-execution work against 1-3 hours of stuck states. Budget it: context recovery 5-10 min,
+infrastructure validation 10-20 min, blocker removal 15-30 min, launch 1-2 min.
 
-### The Solution Pattern (Proactive)
-
-```
-Orchestration partner validates → removes blockers → launches agent → smooth execution → success
-```
-
-**Result:** Efficient delivery, positive morale, feature complete
-
-### The Key Difference
-
-Proactive blocker removal before execution prevents stuck states and enables smooth completion.
+**Evidence and return on investment:** methodology/pre-execution-validation-protocol.md § How Long This Takes
 
 ---
 
-## The Pre-Execution Validation Checklist
+## Phase 1 — Context recovery (5-10 min)
 
-### Phase 1: Context Recovery
+Continuing a feature:
 
-**If Continuing Previous Feature:**
+- [ ] Read the handoff file in `.claude/meta/session-handoffs/`
+- [ ] Name what completed, what blocked, what needed manual intervention
+- [ ] Turn each of those into an action item: blocker to fix, infrastructure to validate, decision to make
 
-- [ ] **Read handoff file** (if session continuation)
+Starting fresh:
 
-  ```bash
-  # Check for handoff in .claude/orchestration/meta/session-handoffs/
-  ls -la .claude/orchestration/meta/session-handoffs/ | grep $(date +%Y-%m-%d)
-  ```
+- [ ] Read the requirements; identify dependencies on earlier features
+- [ ] Look for a past feature with the same shape and reuse what it learned
 
-- [ ] **Understand previous outcomes:**
-    - What was completed successfully?
-    - What blockers were encountered?
-    - What got the agent stuck?
-    - What manual interventions were needed?
-
-- [ ] **Extract action items:**
-    - List specific blockers to fix
-    - List infrastructure to validate
-    - List decisions to make
-
-**If Starting New Feature:**
-
-- [ ] **Read feature requirements clearly**
-- [ ] **Identify dependencies** on previous features
-- [ ] **Check for similar patterns** in past features (reuse learnings)
+**Full phase:** methodology/pre-execution-validation-protocol.md § Phase 1: Context Recovery
 
 ---
 
-### Phase 2: Infrastructure Validation
+## Phase 2 — Infrastructure validation (10-20 min)
 
-**Before committing to ANY new tooling approach:**
+Before committing to any new tooling:
 
-- [ ] **Research tool capabilities:**
-    - What does it do?
-    - How does it work?
-    - What are the alternatives?
+- [ ] Test the tool's requirements **in practice** — does it run here, what does it download, how long does setup take
+- [ ] Price the hidden costs: download size, setup time, learning curve, who can actually use it
+- [ ] Compare against the proven approach already in the repo
+- [ ] Decide pragmatically and write down why
 
-- [ ] **Test tool requirements IN PRACTICE:**
+The rule: **do not assume, validate.** A tool advertised as an improvement can carry a setup cost an order of
+magnitude larger than the alternative it replaces, and you only find that out by running it.
 
-  ```markdown
-  Don't assume - validate:
-
-  - Does tool actually work on this machine?
-  - What needs to be downloaded/installed?
-  - How long does setup take?
-  - What's the disk space requirement?
-  ```
-
-- [ ] **Discover hidden costs:**
-    - Download size (MB vs GB)
-    - Setup time (minutes vs hours)
-    - Learning curve (familiar vs new)
-    - Accessibility (all engineers vs subset)
-
-- [ ] **Compare to proven approaches:**
-
-  ```markdown
-  Trade-off analysis:
-
-  - What's the proven approach?
-  - What's the theoretical improvement?
-  - What's the cost difference?
-  - What's the value difference?
-  - Is improvement worth the cost? (pragmatic decision)
-  ```
-
-- [ ] **Make pragmatic decision:**
-    - Proven approach if cost high OR time-sensitive
-    - Theoretical improvement if validated AND accessible
-    - Document decision and reasoning
-
-**Example:**
-
-- Tool research: "Autonomous testing capability!"
-- Tool validation: Requires 7GB download (30-60 min setup)
-- Comparison: Proven alternative (50MB, 2 min, works reliably)
-- Decision: Use proven alternative for now, test new tool later
-- **Result:** Avoided setup delays and unknown troubleshooting time
+**Worked trade-off analysis:** methodology/pre-execution-validation-protocol.md § Phase 2: Infrastructure Validation
 
 ---
 
-### Phase 3: Proactive Blocker Removal
+## Phase 3 — Proactive blocker removal (15-30 min)
 
-**For each blocker identified in Phase 1:**
+For each blocker from Phase 1:
 
-- [ ] **Verify file paths:**
+- [ ] Verify every file the agent will import actually exists and exports what the agent expects
+- [ ] Check connection configuration matches the environment the agent will run in
+- [ ] Start the services the agent needs (backend, database) before it needs them
+- [ ] Confirm prerequisites are green: compiler, test suite, installed dependencies
+- [ ] Write the fixes into the agent prompt as "X is FIXED" context
 
-  ```bash
-  # If agent needs to import from X, verify X exists:
-  ls path/to/file.ts
-  cat path/to/file.ts | head -20  # Verify exports expected
-  ```
+**Commands per blocker category:** methodology/pre-execution-validation-protocol.md § Common Blocker Categories
 
-- [ ] **Fix connection configurations:**
-
-  ```bash
-  # Check network configurations match testing environment
-  # Example: localhost/proxy in dev, deployed HTTPS API origin in production
-  ```
-
-- [ ] **Start required services:**
-
-  ```bash
-  # Backend needed?
-  curl http://localhost:3000/leads || npm run dev
-
-  # Database needed?
-  docker ps | grep postgres || npm run db:start
-  ```
-
-- [ ] **Verify prerequisites:**
-
-  ```bash
-  # TypeScript compiling?
-  npm run type-check
-
-  # Tests passing?
-  npm test
-
-  # Dependencies installed?
-  ls node_modules/ || npm install
-  ```
-
-- [ ] **Update agent prompt with fixes:**
-
-  ```markdown
-  CRITICAL CONTEXT (BLOCKERS REMOVED):
-
-  - Import paths FIXED: {what was fixed}
-  - Backend connection FIXED: {what was fixed}
-  - Infrastructure VALIDATED: {what was tested}
-
-  YOUR FOCUS:
-
-  - {Clear area of responsibility}
-  - {Infrastructure concerns handled}
-  ```
+The five recurring categories: import paths · connection configuration · service dependencies · infrastructure
+requirements · environment mismatches.
 
 ---
 
-### Phase 4: Agent Launch with Clear Directive
+## Phase 4 — Launch (1-2 min)
 
-**Launch agent with:**
+- [ ] Prompt states which blockers were removed and what was validated
+- [ ] Prompt states one clear focus area
+- [ ] Prompt requires the validation gates
 
-- [ ] **Updated prompt** (includes "X is FIXED" context)
-- [ ] **Clear focus area** (agent knows what to build)
-- [ ] **Blockers removed** (agent won't get stuck)
-- [ ] **Testing approach clarified** (proven method specified)
-
-**Agent directive template:**
-
-```markdown
-CRITICAL CONTEXT:
-
-- {Blocker 1} FIXED: {explanation}
-- {Blocker 2} FIXED: {explanation}
-- {Infrastructure} VALIDATED: {what was tested}
-
-YOUR TASK:
-Focus on {clear implementation area}. Infrastructure concerns already handled.
-
-Follow the prompt exactly, including all validation gates.
-```
+**Directive template:** methodology/pre-execution-validation-protocol.md § Phase 4: Agent Launch with Clear Directive
 
 ---
 
-## Validation: Did the Protocol Work?
+## Did it work?
 
-### During Execution (Monitor)
+Warning signs during execution: agent stuck >15 minutes on one issue · asking basic infrastructure questions ·
+discovering blockers this checklist should have caught · fighting tooling that was never validated.
 
-**Positive indicators:**
+Any of those means Phase 2 or Phase 3 was skipped, not that the agent is weak.
 
--  Agent makes steady progress (no long stuck periods)
--  Agent focuses on implementation (not debugging infrastructure)
--  Agent doesn't ask for guidance on blockers (already removed)
--  Agent completes validation gates systematically
-
-**Warning indicators:**
-
-- ⚠️ Agent stuck for >15 minutes on same issue
-- ⚠️ Agent asking basic questions about infrastructure
-- ⚠️ Agent discovering blockers that should have been fixed
-- ⚠️ Agent struggling with tooling that should have been validated
-
-### After Completion (Verify)
-
-**Success metrics:**
-
--  All validation gates passed (TypeScript, ESLint, tests, device/browser testing)
--  Feature complete and working
--  No major blockers discovered during execution
--  Time efficient (proactive overhead < reactive debugging)
-
-**Failure metrics:**
-
--  Validation gates failed (errors/warnings)
--  Feature incomplete or blocked
--  Multiple blockers discovered during execution
--  Time wasted on infrastructure debugging
+**Success and failure metrics:** methodology/pre-execution-validation-protocol.md § Validation: Did the Protocol Work?
 
 ---
 
-## Common Blocker Categories
+## When to skip
 
-### Category 1: Import Path Issues
-
-**Symptoms:** "Cannot find module", bundler failures
-**Proactive fix:** Verify all imported files exist before agent execution
-
-```bash
-# Agent will import from X? Verify X exists:
-ls src/app/api/leads.service.ts
-```
-
-### Category 2: Connection Configuration
-
-**Symptoms:** "Disconnected", "Cannot connect", network errors
-**Proactive fix:** Verify configurations match environment
-
-```bash
-# Dev uses localhost/proxy; production uses the deployed HTTPS API origin
-# Check the HttpClient provider / API base URL, WebSocket connections
-```
-
-### Category 3: Service Dependencies
-
-**Symptoms:** "Connection refused", "Service not available"
-**Proactive fix:** Start all required services before agent execution
-
-```bash
-# Backend needed? Start it:
-npm run dev
-
-# Database needed? Start it:
-docker ps | grep postgres || npm run db:start
-```
-
-### Category 4: Infrastructure Requirements
-
-**Symptoms:** "Tool not found", "Command not available", hidden setup costs
-**Proactive fix:** Test infrastructure requirements, discover costs, make pragmatic decisions
-
-```bash
-# Don't assume - validate:
-xcrun simctl list devices  # iOS simulators available?
-# If empty: mobile-mcp won't work, need alternative
-```
-
-### Category 5: Environment Mismatches
-
-**Symptoms:** "Works in test but not in dev", "Environment variable missing"
-**Proactive fix:** Verify environment matches agent's needs
-
-```bash
-# Development database has schema?
-npm run db:migrate:fresh
-
-# Environment variables set?
-cat .env.local | grep REQUIRED_VAR
-```
+Trivial documentation updates, quick consultations, and research tasks with no infrastructure dependency. Everything
+that launches an implementation agent runs the checklist.
 
 ---
 
-## Protocol Application Guidelines
+## Where this sits
 
-### When to Use This Protocol
-
-**Always use before:**
-
-- Launching any feature implementation agent
-- Continuing a previously blocked feature
-- Trying a new tooling approach
-- Complex infrastructure setup tasks
-
-**Can skip for:**
-
-- Trivial documentation updates (no agent execution)
-- Quick consultations (no implementation)
-- Research tasks (no infrastructure dependencies)
+Runs **before** coordination protocols (`agent-coordination.md`), prompt creation (`prompt-creation.md`) and session
+logging. Its output is the input to all three.
 
 ---
 
-## Integration with Existing Protocols
-
-### This Protocol Comes BEFORE:
-
-- Coordination protocols (coordination-protocols.md)
-- Agent prompt creation (prompt-templates.md)
-- Session logging (logging-protocol-integration.md)
-
-### This Protocol Ensures:
-
-- Agents receive clear path (blockers removed)
-- Infrastructure validated (tooling works)
-- Pragmatic decisions made (proven approaches chosen)
-- Smooth execution possible (no stuck states)
-
-### This Protocol Connects to:
-
-- Session handoffs (preserve context across sessions)
-- Methodology discoveries (apply learnings to prevent repeated failures)
-- Quality standards (all gates passable when blockers removed)
-
----
-
-## Application Pattern
-
-### Successful Implementation Example
-
-**Challenge:** Previous attempt blocked by import paths + backend connection + infrastructure decisions
-**Protocol Applied:**
-
-- Read handoff → identified 3 blockers
-- Validated infrastructure → discovered tool had high setup cost
-- Fixed blockers proactively → imports verified, backend configured, proven approach chosen
-- Launched agent → smooth execution, all gates passed, COMPLETE
-  **Result:** Efficient completion vs blocked state
-
-### How to Apply
-
-- Read previous session context → prevent similar blockers
-- Validate new infrastructure before committing
-- Apply proactive blocker removal systematically
-
----
-
-## Teaching This Protocol
-
-### Module: "Strategic Orchestration for 100% Success"
-
-**Week 1-2: Learn Strategic Thinking**
-
-- How to read session handoffs for context
-- How to identify blockers before execution
-- How to validate infrastructure requirements
-- How to make pragmatic trade-off decisions
-
-**Practice:**
-
-- Given session handoff → identify blockers
-- Given infrastructure research → discover true costs
-- Choose: proven approach vs theoretical improvement
-
-**Week 3-4: Apply Proactive Problem-Solving**
-
-- Fix import paths before agent execution
-- Configure connections proactively
-- Start services before agent needs them
-- Verify prerequisites working
-
-**Practice:**
-
-- Given feature requirements → create pre-execution checklist
-- Fix all blockers proactively
-- Launch agent with "X is FIXED" directive
-
-**Week 5-6: Master Strategic Orchestration**
-
-- Full workflow: Handoff → validate → fix → launch → success
-- Recognize when to think strategically vs delegate tactically
-- Systematic success through proactive orchestration
-
----
-
-## The Core Teaching
-
-**"Engineers who master strategic orchestration deliver features systematically. Engineers who only delegate tactically
-get stuck reactively."**
-
-**Strategic orchestration means:**
-
-- Read context (handoffs, past failures)
-- Validate infrastructure (test, don't assume)
-- Remove blockers (fix before execution)
-- Clear path (agents focus on value)
-
-**Tactical execution means:**
-
-- Implement features (clear requirements)
-- Validate quality (all gates)
-- Document decisions (session logs)
-- Deliver successfully (gates passed)
-
-**Together:**
-
-- Strategic thinking + tactical doing = systematic success
-- Teaching quality + practical application
-- **This IS the methodology**
-
----
-
-## Status
-
-**Protocol Status:** Proven and ready for use
-**Application:** Mandatory for all feature agent execution
-**Documentation:** Complete with checklists and practical examples
-**Teaching Ready:** Can be taught immediately in curriculum
-
-**Implementation Results:**
-
-- Proactive approach: Smooth completion
-- Reactive approach: Blocked states and interventions required
-- All validation gates passed with proactive protocol
-
-**Ready for:** Integration into standard workflow
-
----
-
-**Last Updated:** 2025-10-08
-**Core Insight:** "Proactive orchestration (strategic) + focused execution (tactical) = systematic success"
+**Status:** Mandatory before every feature agent execution.
