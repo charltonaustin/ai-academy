@@ -153,7 +153,7 @@ Add this to ANY feature-building agent prompt:
 You MUST maintain a session log as you work. Create a file:
 `.claude/workspace/[feature]/agent-logs/[your-agent-name]-session.md`
 
-Use the appropriate logging template from `.claude/orchestration/methodology/logging-templates.md` and update it throughout your session, especially when:
+Use the appropriate logging template from `.claude/orchestration/templates/logging-templates.md` and update it throughout your session, especially when:
 
 - Making technology choices that affect other agents
 - Discovering integration requirements

@@ -382,7 +382,7 @@ You MUST maintain a detailed session log throughout your work.
 
 ### Log Setup
 1. **Create Log File:** `.claude/workspace/infrastructure/testing-framework-setup-session.md`
-2. **Use Template:** Infrastructure Agent Log template from `.claude/orchestration/methodology/logging-templates.md`
+2. **Use Template:** Infrastructure Agent Log template from `.claude/orchestration/templates/logging-templates.md`
 3. **Update Real-Time:** Log decisions, discoveries, and setup challenges
 
 ### Critical Logging Points

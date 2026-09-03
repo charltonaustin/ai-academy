@@ -58,7 +58,7 @@ learnings.
 
 ### SESSION LOGGING REQUIREMENT (MANDATORY):
 - Create: `.claude/workspace/[FEATURE]/agent-logs/database-agent-session.md`
-- Use: Infrastructure Agent Log template from `.claude/orchestration/methodology/logging-templates.md`
+- Use: Infrastructure Agent Log template from `.claude/orchestration/templates/logging-templates.md`
 - Log: Technology decisions, database design choices, integration setup decisions
 - Purpose: Teaching material for database setup methodology and coordination patterns
 ```
