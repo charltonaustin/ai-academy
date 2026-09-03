@@ -194,59 +194,10 @@ Import schema types and use them directly.
 
 **Solution:** Validation checkpoint between parallel completion and final delivery
 
-**Mandatory Validation Steps:**
-
-#### 1. TypeScript Compilation
-
-```bash
-npm run type-check
-```
-
-**Required:** Output shows "✔ No TypeScript errors" (0 errors)
-
-#### 2. ESLint
-
-```bash
-npm run lint
-```
-
-**Required:** Output shows "✔ No ESLint warnings or errors" (0 warnings)
-
-#### 3. Test Suite
-
-```bash
-npm test
-```
-
-**Required:** All tests passing
-
-#### 4. Resource Check
-
-```bash
-# Verify clean environment
-pgrep -f jest || echo "No hanging processes "
-```
-
-**Required:** Clean development environment, no resource leaks
-
-#### 5. Manual Browser/Device Testing
-
-**Required:** Feature works in actual browser or device, not just automated tests
-
-**For Web:**
-
-- Start dev server: `npm run dev`
-- Open browser: http://localhost:3000 (or configured port)
-- Test all implemented features end-to-end
-- Check browser console for zero errors
-- Verify database operations in development database
-
-**For Mobile:**
-
-- Start development server: `npm start`
-- Test in the browser and install as a PWA on a device
-- Check browser DevTools console for zero errors
-- Verify features work in actual app environment
+**Mandatory Validation Steps:** the five gates, and the commands that run them, are defined once in
+@.claude/orchestration/methodology/validation-gates.md. Run them at this checkpoint as well as at
+individual agent completion. The point of this pattern is that every agent reporting green does not
+make the system green.
 
 **Why It Matters:**
 
@@ -435,37 +386,9 @@ Task 0: Infrastructure
 
 **Problem:** Agents claim "complete" before validating all quality requirements
 
-**Solution:** Five mandatory validation gates before claiming completion
-
-**Gate 1: TypeScript (0 errors)**
-
-```bash
-npm run type-check
-```
-
-**Gate 2: ESLint (0 warnings)**
-
-```bash
-npm run lint
-```
-
-**Gate 3: Tests (all passing)**
-
-```bash
-npm test
-```
-
-**Gate 4: Resource Check (clean environment)**
-
-```bash
-# Verify clean environment
-pgrep -f jest || echo "No hanging processes "
-```
-
-**Gate 5: Browser/Device Testing (features work)**
-
-- Web: Open browser, test features, check console
-- Mobile: Open device/simulator, test features, check console
+**Solution:** every gate defined in @.claude/orchestration/methodology/validation-gates.md must pass
+before an agent may claim completion. That file is the single definition; this pattern is only the
+rule that the claim is not allowed without them.
 
 **Claiming "COMPLETE" without passing ALL gates = INCOMPLETE TASK**
 
